@@ -96,9 +96,41 @@
 #    Classes
 #################################################################
 
+###  http://www.estudiantes.org/LibreriaUNAL#Comedia
+:Comedia rdf:type owl:Class ;
+         rdfs:subClassOf :Genero .
+
+
 ###  http://www.estudiantes.org/LibreriaUNAL#Publicacion
 :Publicacion rdf:type owl:Class ;
              rdfs:label "Trabajos publicados" .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#PublicacionesPorGenero
+:PublicacionesPorGenero rdf:type owl:Class ;
+                        owl:equivalentClass :TragiComedia .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#Tragedia
+:Tragedia rdf:type owl:Class ;
+          rdfs:subClassOf :Genero .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#TragiComedia
+:TragiComedia rdf:type owl:Class ;
+              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                owl:onProperty :tieneGenero ;
+                                owl:allValuesFrom :Comedia
+                              ] ,
+                              [ rdf:type owl:Restriction ;
+                                owl:onProperty :tieneGenero ;
+                                owl:allValuesFrom :Tragedia
+                              ] .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#para_que_no_me_de_toc
+:para_que_no_me_de_toc rdf:type owl:Class ;
+                       rdfs:subClassOf :PublicacionesPorGenero .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/Autor
@@ -163,7 +195,8 @@
 
 ###  http://www.estudiantes.org/LibreriaUNAL/manga
 :manga rdf:type owl:Class ;
-       rdfs:subClassOf :Grafico .
+       rdfs:subClassOf :Grafico ;
+       rdfs:label "Mangas" .
 
 
 #################################################################
