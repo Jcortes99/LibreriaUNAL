@@ -9,67 +9,182 @@
 <http://www.estudiantes.org/LibreriaUNAL> rdf:type owl:Ontology .
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.estudiantes.org/LibreriaUNAL#compradoPor
+:compradoPor rdf:type owl:ObjectProperty ;
+             owl:equivalentProperty :leidoPor ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Cliente ;
+             rdfs:range :Publicacion .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#esAutor
+:esAutor rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         owl:inverseOf :tieneAutor ;
+         rdfs:domain :Autor ;
+         rdfs:range :Publicacion .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#esEditorial
+:esEditorial rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             owl:inverseOf :tieneEditorial ;
+             rdf:type owl:InverseFunctionalProperty ;
+             rdfs:domain :Editorial ;
+             rdfs:range :Publicacion .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#esGenero
+:esGenero rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          owl:inverseOf :tieneGenero ;
+          rdfs:domain :Genero ;
+          rdfs:range :Publicacion .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#leidoPor
+:leidoPor rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Cliente ;
+          rdfs:range :Publicacion .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#noTieneImagenes
+:noTieneImagenes rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#publicadoAntes
+:publicadoAntes rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdf:type owl:TransitiveProperty ;
+                rdfs:domain :Publicacion ;
+                rdfs:range :Publicacion .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#tieneAutor
+:tieneAutor rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:domain :Publicacion ;
+            rdfs:range :Autor .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#tieneEditorial
+:tieneEditorial rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdf:type owl:FunctionalProperty ;
+                rdfs:domain :Publicacion ;
+                rdfs:range :Editorial .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#tieneGenero
+:tieneGenero rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Publicacion ;
+             rdfs:range :Genero .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#tieneImagenes
+:tieneImagenes rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty .
+
+
+#################################################################
 #    Classes
 #################################################################
 
-###  http://www.estudiantes.org/LibreriaUNAL#Autor
+###  http://www.estudiantes.org/LibreriaUNAL#Publicacion
+:Publicacion rdf:type owl:Class ;
+             rdfs:label "Trabajos publicados" .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL/Autor
 :Autor rdf:type owl:Class ;
        rdfs:subClassOf :Persona .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Cliente
+###  http://www.estudiantes.org/LibreriaUNAL/Cliente
 :Cliente rdf:type owl:Class ;
          rdfs:subClassOf :Persona .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Editorial
+###  http://www.estudiantes.org/LibreriaUNAL/Editorial
 :Editorial rdf:type owl:Class .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Empleado
+###  http://www.estudiantes.org/LibreriaUNAL/Empleado
 :Empleado rdf:type owl:Class ;
-          rdfs:subClassOf :Persona .
+          rdfs:subClassOf :Persona ;
+          owl:disjointWith :Genero .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Escrito
-:Escrito rdf:type owl:Class .
+###  http://www.estudiantes.org/LibreriaUNAL/Escrito
+:Escrito rdf:type owl:Class ;
+         rdfs:subClassOf :Publicacion ;
+         owl:disjointWith :Grafico .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Genero
+###  http://www.estudiantes.org/LibreriaUNAL/Genero
 :Genero rdf:type owl:Class .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Grafico
-:Grafico rdf:type owl:Class .
+###  http://www.estudiantes.org/LibreriaUNAL/Grafico
+:Grafico rdf:type owl:Class ;
+         rdfs:subClassOf :Publicacion .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Libro
+###  http://www.estudiantes.org/LibreriaUNAL/Libro
 :Libro rdf:type owl:Class ;
        rdfs:subClassOf :Escrito .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Peridico
+###  http://www.estudiantes.org/LibreriaUNAL/Peridico
 :Peridico rdf:type owl:Class ;
           rdfs:subClassOf :Escrito .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Persona
+###  http://www.estudiantes.org/LibreriaUNAL/Persona
 :Persona rdf:type owl:Class .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Revista
+###  http://www.estudiantes.org/LibreriaUNAL/Revista
 :Revista rdf:type owl:Class ;
          rdfs:subClassOf :Escrito .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#comic
+###  http://www.estudiantes.org/LibreriaUNAL/comic
 :comic rdf:type owl:Class ;
-       rdfs:subClassOf :Grafico .
+       rdfs:subClassOf :Grafico ;
+       owl:disjointWith :manga .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#manga
+###  http://www.estudiantes.org/LibreriaUNAL/manga
 :manga rdf:type owl:Class ;
        rdfs:subClassOf :Grafico .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Publicacion
+                :Editorial
+                :Genero
+                :Persona
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Libro
+                :Peridico
+                :Revista
+              )
+] .
 
 
 ###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
