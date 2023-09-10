@@ -12,12 +12,25 @@
 #    Object Properties
 #################################################################
 
-###  http://www.estudiantes.org/LibreriaUNAL/compradoPor
-:compradoPor rdf:type owl:ObjectProperty ;
-             owl:equivalentProperty :leidoPor ;
-             rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:domain :Cliente ;
-             rdfs:range :Publicacion .
+###  http://www.estudiantes.org/LibreriaUNAL#distribuye
+:distribuye rdf:type owl:ObjectProperty ;
+            owl:equivalentProperty :esEditorial ;
+            owl:inverseOf :esDistribuido ;
+            rdfs:domain :Editorial ;
+            rdfs:range :Libro .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#esDistribuido
+:esDistribuido rdf:type owl:ObjectProperty ;
+               owl:equivalentProperty :tieneEditorial ;
+               rdfs:domain :Libro ;
+               rdfs:range :Editorial .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL#tieneIlustracion
+:tieneIlustracion rdf:type owl:ObjectProperty ;
+                  rdfs:domain :Libro ;
+                  rdfs:range :Ilustracion .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/esAutor
@@ -25,7 +38,7 @@
          rdfs:subPropertyOf owl:topObjectProperty ;
          owl:inverseOf :tieneAutor ;
          rdfs:domain :Autor ;
-         rdfs:range :Publicacion .
+         rdfs:range :Libro .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/esEditorial
@@ -34,7 +47,7 @@
              owl:inverseOf :tieneEditorial ;
              rdf:type owl:InverseFunctionalProperty ;
              rdfs:domain :Editorial ;
-             rdfs:range :Publicacion .
+             rdfs:range :Libro .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/esGenero
@@ -42,33 +55,21 @@
           rdfs:subPropertyOf owl:topObjectProperty ;
           owl:inverseOf :tieneGenero ;
           rdfs:domain :Genero ;
-          rdfs:range :Publicacion .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/leidoPor
-:leidoPor rdf:type owl:ObjectProperty ;
-          rdfs:subPropertyOf owl:topObjectProperty ;
-          rdfs:domain :Cliente ;
-          rdfs:range :Publicacion .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/noTieneImagenes
-:noTieneImagenes rdf:type owl:ObjectProperty ;
-                 rdfs:subPropertyOf owl:topObjectProperty .
+          rdfs:range :Libro .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/publicadoAntes
 :publicadoAntes rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
                 rdf:type owl:TransitiveProperty ;
-                rdfs:domain :Publicacion ;
-                rdfs:range :Publicacion .
+                rdfs:domain :Libro ;
+                rdfs:range :Libro .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/tieneAutor
 :tieneAutor rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
-            rdfs:domain :Publicacion ;
+            rdfs:domain :Libro ;
             rdfs:range :Autor .
 
 
@@ -76,59 +77,103 @@
 :tieneEditorial rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
                 rdf:type owl:FunctionalProperty ;
-                rdfs:domain :Publicacion ;
+                rdfs:domain :Libro ;
                 rdfs:range :Editorial .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/tieneGenero
 :tieneGenero rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
-             rdfs:domain :Publicacion ;
+             rdfs:domain :Libro ;
              rdfs:range :Genero .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/tieneImagenes
-:tieneImagenes rdf:type owl:ObjectProperty ;
-               rdfs:subPropertyOf owl:topObjectProperty .
 
 
 #################################################################
 #    Classes
 #################################################################
 
-###  http://www.estudiantes.org/LibreriaUNAL#CienciaFiccion
-:CienciaFiccion rdf:type owl:Class ;
-                rdfs:subClassOf :Genero .
+###  http://www.estudiantes.org/LibreriaUNAL#GeneroCompuesto
+:GeneroCompuesto rdf:type owl:Class ;
+                 rdfs:subClassOf :Libro .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Cientifico
-:Cientifico rdf:type owl:Class ;
-            rdfs:subClassOf :Genero .
+###  http://www.estudiantes.org/LibreriaUNAL#Ilustracion
+:Ilustracion rdf:type owl:Class ;
+             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                               owl:onProperty :tieneAutor ;
+                               owl:allValuesFrom :Autor
+                             ] .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Deportes
-:Deportes rdf:type owl:Class ;
-          rdfs:subClassOf :Genero .
+###  http://www.estudiantes.org/LibreriaUNAL#Ilustrado
+:Ilustrado rdf:type owl:Class ;
+           rdfs:subClassOf :Publicacion ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :tieneIlustracion ;
+                             owl:someValuesFrom :Ilustracion
+                           ] ;
+           owl:disjointWith :NoIlustrado .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Farandula
-:Farandula rdf:type owl:Class ;
-           rdfs:subClassOf :Genero .
+###  http://www.estudiantes.org/LibreriaUNAL#NoIlustrado
+:NoIlustrado rdf:type owl:Class ;
+             rdfs:subClassOf :Publicacion .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Historia
-:Historia rdf:type owl:Class ;
-          rdfs:subClassOf :Genero .
+###  http://www.estudiantes.org/LibreriaUNAL#RomanceHistorico
+:RomanceHistorico rdf:type owl:Class ;
+                  owl:equivalentClass [ owl:intersectionOf ( :GeneroCompuesto
+                                                             [ rdf:type owl:Restriction ;
+                                                               owl:onProperty :esGenero ;
+                                                               owl:allValuesFrom [ owl:intersectionOf ( :Historia
+                                                                                                        :Romantica
+                                                                                                      ) ;
+                                                                                   rdf:type owl:Class
+                                                                                 ]
+                                                             ]
+                                                           ) ;
+                                        rdf:type owl:Class
+                                      ] ;
+                  owl:disjointWith :Tragicomedia .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#Romantica
-:Romantica rdf:type owl:Class ;
-           rdfs:subClassOf :Genero .
+###  http://www.estudiantes.org/LibreriaUNAL#Tragicomedia
+:Tragicomedia rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :GeneroCompuesto
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :esGenero ;
+                                                           owl:allValuesFrom [ owl:intersectionOf ( :Comedia
+                                                                                                    :Tragedia
+                                                                                                  ) ;
+                                                                               rdf:type owl:Class
+                                                                             ]
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL#SuspensoYTerror
-:SuspensoYTerror rdf:type owl:Class ;
-                 rdfs:subClassOf :Genero .
+###  http://www.estudiantes.org/LibreriaUNAL#jamon
+:jamon rdf:type owl:Class ;
+       owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :tieneIlustracion ;
+                                                    owl:someValuesFrom :Ilustracion
+                                                  ]
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :tieneAutor ;
+                                                    owl:someValuesFrom :Autor
+                                                  ]
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :tieneEditorial ;
+                                                    owl:someValuesFrom :Editorial
+                                                  ]
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :tieneGenero ;
+                                                    owl:someValuesFrom :Cientifico
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/Autor
@@ -136,9 +181,14 @@
        rdfs:subClassOf :Persona .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/Cliente
-:Cliente rdf:type owl:Class ;
-         rdfs:subClassOf :Persona .
+###  http://www.estudiantes.org/LibreriaUNAL/CienciaFiccion
+:CienciaFiccion rdf:type owl:Class ;
+                rdfs:subClassOf :Genero .
+
+
+###  http://www.estudiantes.org/LibreriaUNAL/Cientifico
+:Cientifico rdf:type owl:Class ;
+            rdfs:subClassOf :Genero .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/Comedia
@@ -146,39 +196,43 @@
          rdfs:subClassOf :Genero .
 
 
+###  http://www.estudiantes.org/LibreriaUNAL/Deportes
+:Deportes rdf:type owl:Class ;
+          rdfs:subClassOf :Genero .
+
+
 ###  http://www.estudiantes.org/LibreriaUNAL/Editorial
 :Editorial rdf:type owl:Class .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/Empleado
-:Empleado rdf:type owl:Class ;
-          rdfs:subClassOf :Persona ;
-          owl:disjointWith :Genero .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/Escrito
-:Escrito rdf:type owl:Class ;
-         rdfs:subClassOf :Publicacion ;
-         owl:disjointWith :Grafico .
+###  http://www.estudiantes.org/LibreriaUNAL/Farandula
+:Farandula rdf:type owl:Class ;
+           rdfs:subClassOf :Genero .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/Genero
 :Genero rdf:type owl:Class .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/Grafico
-:Grafico rdf:type owl:Class ;
-         rdfs:subClassOf :Publicacion .
+###  http://www.estudiantes.org/LibreriaUNAL/Historia
+:Historia rdf:type owl:Class ;
+          rdfs:subClassOf :Genero .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/Libro
 :Libro rdf:type owl:Class ;
-       rdfs:subClassOf :Escrito .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/Peridico
-:Peridico rdf:type owl:Class ;
-          rdfs:subClassOf :Escrito .
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneAutor ;
+                         owl:someValuesFrom :Autor
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneEditorial ;
+                         owl:someValuesFrom :Editorial
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneGenero ;
+                         owl:someValuesFrom :Genero
+                       ] .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/Persona
@@ -187,51 +241,23 @@
 
 ###  http://www.estudiantes.org/LibreriaUNAL/Publicacion
 :Publicacion rdf:type owl:Class ;
+             rdfs:subClassOf :Libro ;
              rdfs:label "Trabajos publicados" .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/PublicacionesPorGenero
-:PublicacionesPorGenero rdf:type owl:Class ;
-                        owl:equivalentClass :TragiComedia .
+###  http://www.estudiantes.org/LibreriaUNAL/Romantica
+:Romantica rdf:type owl:Class ;
+           rdfs:subClassOf :Genero .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/Revista
-:Revista rdf:type owl:Class ;
-         rdfs:subClassOf :Escrito .
+###  http://www.estudiantes.org/LibreriaUNAL/SuspensoYTerror
+:SuspensoYTerror rdf:type owl:Class ;
+                 rdfs:subClassOf :Genero .
 
 
 ###  http://www.estudiantes.org/LibreriaUNAL/Tragedia
 :Tragedia rdf:type owl:Class ;
           rdfs:subClassOf :Genero .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/TragiComedia
-:TragiComedia rdf:type owl:Class ;
-              rdfs:subClassOf [ rdf:type owl:Restriction ;
-                                owl:onProperty :tieneGenero ;
-                                owl:allValuesFrom :Comedia
-                              ] ,
-                              [ rdf:type owl:Restriction ;
-                                owl:onProperty :tieneGenero ;
-                                owl:allValuesFrom :Tragedia
-                              ] .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/comic
-:comic rdf:type owl:Class ;
-       rdfs:subClassOf :Grafico ;
-       owl:disjointWith :manga .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/manga
-:manga rdf:type owl:Class ;
-       rdfs:subClassOf :Grafico ;
-       rdfs:label "Mangas" .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/para_que_no_me_de_toc
-:para_que_no_me_de_toc rdf:type owl:Class ;
-                       rdfs:subClassOf :PublicacionesPorGenero .
 
 
 #################################################################
@@ -241,16 +267,17 @@
 [ rdf:type owl:AllDisjointClasses ;
   owl:members ( :Editorial
                 :Genero
+                :Libro
                 :Persona
-                :Publicacion
               )
 ] .
 
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Libro
-                :Peridico
-                :Revista
+  owl:members ( :Editorial
+                :Genero
+                :Persona
+                :Publicacion
               )
 ] .
 
