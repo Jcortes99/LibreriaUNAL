@@ -1,26 +1,27 @@
-@prefix : <http://www.estudiantes.org/LibreriaUNAL/> .
+@prefix : <http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.estudiantes.org/LibreriaUNAL/> .
+@base <http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/> .
 
-<http://www.estudiantes.org/LibreriaUNAL> rdf:type owl:Ontology .
+<http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18> rdf:type owl:Ontology .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://www.estudiantes.org/LibreriaUNAL/distribuye
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/distribuye
 :distribuye rdf:type owl:ObjectProperty ;
             owl:equivalentProperty :esEditorial ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
             owl:inverseOf :esDistribuido ;
             rdfs:domain :Editorial ;
-            rdfs:range :Publicacion .
+            rdfs:range :Libro .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/esAutor
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/esAutor
 :esAutor rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf owl:topObjectProperty ;
          owl:inverseOf :tieneAutor ;
@@ -28,23 +29,23 @@
          rdfs:range :Libro .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/esDistribuido
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/esDistribuido
 :esDistribuido rdf:type owl:ObjectProperty ;
                owl:equivalentProperty :tieneEditorial ;
-               rdfs:domain :Publicacion ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:domain :Libro ;
                rdfs:range :Editorial .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/esEditorial
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/esEditorial
 :esEditorial rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              owl:inverseOf :tieneEditorial ;
-             rdf:type owl:InverseFunctionalProperty ;
              rdfs:domain :Editorial ;
-             rdfs:range :Publicacion .
+             rdfs:range :Libro .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/esGenero
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/esGenero
 :esGenero rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
           owl:inverseOf :tieneGenero ;
@@ -52,39 +53,46 @@
           rdfs:range :Libro .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/publicadoAntes
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/esIlustracion
+:esIlustracion rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               owl:inverseOf :tieneIlustracion ;
+               rdfs:domain :Ilustracion ;
+               rdfs:range :Ilustrado .
+
+
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/publicadoAntes
 :publicadoAntes rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
-                rdf:type owl:TransitiveProperty ;
                 rdfs:domain :Libro ;
                 rdfs:range :Libro .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/tieneAutor
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/tieneAutor
 :tieneAutor rdf:type owl:ObjectProperty ;
             rdfs:subPropertyOf owl:topObjectProperty ;
             rdfs:domain :Libro ;
             rdfs:range :Autor .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/tieneEditorial
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/tieneEditorial
 :tieneEditorial rdf:type owl:ObjectProperty ;
                 rdfs:subPropertyOf owl:topObjectProperty ;
-                rdf:type owl:FunctionalProperty ;
-                rdfs:domain :Publicacion ;
+                rdfs:domain :Libro ;
                 rdfs:range :Editorial .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/tieneGenero
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/tieneGenero
 :tieneGenero rdf:type owl:ObjectProperty ;
              rdfs:subPropertyOf owl:topObjectProperty ;
              rdfs:domain :Libro ;
              rdfs:range :Genero .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/tieneIlustracion
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/tieneIlustracion
 :tieneIlustracion rdf:type owl:ObjectProperty ;
-                  rdfs:domain :Ilustrado ;
+                  rdfs:subPropertyOf owl:topObjectProperty ;
+                  rdfs:domain :Libro ;
                   rdfs:range :Ilustracion .
 
 
@@ -92,179 +100,162 @@
 #    Classes
 #################################################################
 
-###  http://www.estudiantes.org/LibreriaUNAL/Autor
-:Autor rdf:type owl:Class ;
-       rdfs:subClassOf :Persona .
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Autor
+:Autor rdf:type owl:Class .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/CienciaFiccion
-:CienciaFiccion rdf:type owl:Class ;
-                rdfs:subClassOf :Genero .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/Cientifico
-:Cientifico rdf:type owl:Class ;
-            rdfs:subClassOf :Genero .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/Comedia
-:Comedia rdf:type owl:Class ;
-         rdfs:subClassOf :Genero .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/Deportes
-:Deportes rdf:type owl:Class ;
-          rdfs:subClassOf :Genero .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/Editorial
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Editorial
 :Editorial rdf:type owl:Class .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/Farandula
-:Farandula rdf:type owl:Class ;
-           rdfs:subClassOf :Genero .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/Genero
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Genero
 :Genero rdf:type owl:Class .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/GeneroCompuesto
-:GeneroCompuesto rdf:type owl:Class ;
-                 rdfs:subClassOf :Libro .
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Ilustracion
+:Ilustracion rdf:type owl:Class .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/Historia
-:Historia rdf:type owl:Class ;
-          rdfs:subClassOf :Genero .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/Ilustracion
-:Ilustracion rdf:type owl:Class ;
-             rdfs:subClassOf [ rdf:type owl:Restriction ;
-                               owl:onProperty :tieneAutor ;
-                               owl:allValuesFrom :Autor
-                             ] ;
-             owl:disjointWith :Libro ,
-                              :Publicacion .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/Ilustrado
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Ilustrado
 :Ilustrado rdf:type owl:Class ;
-           owl:equivalentClass [ rdf:type owl:Class ;
-                                 owl:complementOf :NoIlustrado
-                               ] ;
-           rdfs:subClassOf :Publicacion ,
+           rdfs:subClassOf :Libro ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :tieneEditorial ;
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Editorial
+                           ] ,
                            [ rdf:type owl:Restriction ;
                              owl:onProperty :tieneIlustracion ;
-                             owl:someValuesFrom :Ilustracion
-                           ] .
+                             owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass :Ilustracion
+                           ] ;
+           owl:disjointWith :NoIlustrado .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/Libro
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Libro
 :Libro rdf:type owl:Class ;
-       rdfs:subClassOf [ rdf:type owl:Restriction ;
-                         owl:onProperty :tieneAutor ;
-                         owl:someValuesFrom :Autor
-                       ] ,
-                       [ rdf:type owl:Restriction ;
-                         owl:onProperty :tieneGenero ;
-                         owl:someValuesFrom :Genero
+       rdfs:subClassOf [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
+                                                owl:onProperty :tieneAutor ;
+                                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                owl:onClass :Autor
+                                              ]
+                                              [ rdf:type owl:Restriction ;
+                                                owl:onProperty :tieneGenero ;
+                                                owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                owl:onClass :Genero
+                                              ]
+                                            ) ;
+                         rdf:type owl:Class
                        ] .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/NoIlustrado
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/NoIlustrado
 :NoIlustrado rdf:type owl:Class ;
-             owl:equivalentClass [ rdf:type owl:Class ;
-                                   owl:complementOf :Ilustrado
-                                 ] ;
-             rdfs:subClassOf :Publicacion .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/Persona
-:Persona rdf:type owl:Class .
-
-
-###  http://www.estudiantes.org/LibreriaUNAL/Publicacion
-:Publicacion rdf:type owl:Class ;
              rdfs:subClassOf :Libro ,
+                             [ rdf:type owl:Class ;
+                               owl:complementOf [ rdf:type owl:Restriction ;
+                                                  owl:onProperty :tieneIlustracion ;
+                                                  owl:someValuesFrom :Ilustracion
+                                                ]
+                             ] ,
                              [ rdf:type owl:Restriction ;
                                owl:onProperty :tieneEditorial ;
-                               owl:someValuesFrom :Editorial
-                             ] ;
-             rdfs:label "Trabajos publicados" .
+                               owl:minQualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass :Editorial
+                             ] .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/RomanceHistorico
-:RomanceHistorico rdf:type owl:Class ;
-                  owl:equivalentClass [ owl:intersectionOf ( :GeneroCompuesto
-                                                             [ rdf:type owl:Restriction ;
-                                                               owl:onProperty :esGenero ;
-                                                               owl:allValuesFrom [ owl:intersectionOf ( :Historia
-                                                                                                        :Romantica
-                                                                                                      ) ;
-                                                                                   rdf:type owl:Class
-                                                                                 ]
-                                                             ]
-                                                           ) ;
-                                        rdf:type owl:Class
-                                      ] ;
-                  owl:disjointWith :Tragicomedia .
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18#Homero
+:Homero rdf:type owl:NamedIndividual ,
+                 :Autor .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/Romantica
-:Romantica rdf:type owl:Class ;
-           rdfs:subClassOf :Genero .
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18#Joker
+:Joker rdf:type owl:NamedIndividual ,
+                :Ilustracion ;
+       :esIlustracion :TheKillingJoke .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/SuspensoYTerror
-:SuspensoYTerror rdf:type owl:Class ;
-                 rdfs:subClassOf :Genero .
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18#LePetitPrince
+:LePetitPrince rdf:type owl:NamedIndividual ,
+                        :Libro ;
+               :tieneAutor :AntoineDeSaint ;
+               :tieneEditorial :Universal ;
+               :tieneGenero :Ficcion ;
+               :tieneIlustracion :Rose .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/Tragedia
-:Tragedia rdf:type owl:Class ;
-          rdfs:subClassOf :Genero .
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18#Odisea
+:Odisea rdf:type owl:NamedIndividual ,
+                 :NoIlustrado ;
+        :tieneAutor :Homero ;
+        :tieneEditorial :Universal ;
+        :tieneGenero :Ficcion ,
+                     :Historico ,
+                     :Tragedia .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/Tragicomedia
-:Tragicomedia rdf:type owl:Class ;
-              owl:equivalentClass [ owl:intersectionOf ( :GeneroCompuesto
-                                                         [ rdf:type owl:Restriction ;
-                                                           owl:onProperty :esGenero ;
-                                                           owl:allValuesFrom [ owl:intersectionOf ( :Comedia
-                                                                                                    :Tragedia
-                                                                                                  ) ;
-                                                                               rdf:type owl:Class
-                                                                             ]
-                                                         ]
-                                                       ) ;
-                                    rdf:type owl:Class
-                                  ] .
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/AlanMoore
+:AlanMoore rdf:type owl:NamedIndividual ,
+                    :Autor .
 
 
-###  http://www.estudiantes.org/LibreriaUNAL/jamon
-:jamon rdf:type owl:Class ;
-       owl:equivalentClass [ owl:intersectionOf ( [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :tieneAutor ;
-                                                    owl:someValuesFrom :Autor
-                                                  ]
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :tieneEditorial ;
-                                                    owl:someValuesFrom :Editorial
-                                                  ]
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :tieneGenero ;
-                                                    owl:someValuesFrom :Cientifico
-                                                  ]
-                                                  [ rdf:type owl:Restriction ;
-                                                    owl:onProperty :tieneIlustracion ;
-                                                    owl:someValuesFrom :Ilustracion
-                                                  ]
-                                                ) ;
-                             rdf:type owl:Class
-                           ] .
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/AntoineDeSaint
+:AntoineDeSaint rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Dante
+:Dante rdf:type owl:NamedIndividual ,
+                :Autor .
+
+
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/DivinaComedia
+:DivinaComedia rdf:type owl:NamedIndividual ,
+                        :NoIlustrado ;
+               :tieneAutor :Dante ;
+               :tieneEditorial :Norma ;
+               :tieneGenero :Tragedia .
+
+
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Ficcion
+:Ficcion rdf:type owl:NamedIndividual .
+
+
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Historico
+:Historico rdf:type owl:NamedIndividual ,
+                    :Genero .
+
+
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Norma
+:Norma rdf:type owl:NamedIndividual ,
+                :Editorial .
+
+
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Rose
+:Rose rdf:type owl:NamedIndividual ,
+               :Ilustracion .
+
+
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/TheKillingJoke
+:TheKillingJoke rdf:type owl:NamedIndividual ,
+                         :Libro ;
+                :tieneAutor :AlanMoore ;
+                :tieneEditorial :Norma ;
+                :tieneGenero :Historico .
+
+
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Tragedia
+:Tragedia rdf:type owl:NamedIndividual ,
+                   :Genero .
+
+
+###  http://www.semanticweb.org/jairoacortes/ontologies/2023/8/untitled-ontology-18/Universal
+:Universal rdf:type owl:NamedIndividual ,
+                    :Editorial .
 
 
 #################################################################
@@ -272,30 +263,11 @@
 #################################################################
 
 [ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Editorial
+  owl:members ( :Autor
+                :Editorial
                 :Genero
                 :Ilustracion
-                :Ilustrado
-                :NoIlustrado
-                :Persona
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Editorial
-                :Genero
                 :Libro
-                :Persona
-              )
-] .
-
-
-[ rdf:type owl:AllDisjointClasses ;
-  owl:members ( :Editorial
-                :Genero
-                :Persona
-                :Publicacion
               )
 ] .
 
