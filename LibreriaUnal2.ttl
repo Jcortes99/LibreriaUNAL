@@ -1,0 +1,354 @@
+@prefix : <http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca/> .
+
+<http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#amigoDe
+:amigoDe rdf:type owl:ObjectProperty ,
+                  owl:SymmetricProperty ;
+         rdfs:domain :Socio ;
+         rdfs:range :Socio .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#antesDe
+:antesDe rdf:type owl:ObjectProperty ;
+         owl:inverseOf :despuesDe ;
+         rdf:type owl:TransitiveProperty ;
+         rdfs:domain :Libro ;
+         rdfs:range :Libro .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#autorDe
+:autorDe rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf owl:topObjectProperty ;
+         owl:inverseOf :tieneAutor ;
+         rdf:type owl:FunctionalProperty ;
+         rdfs:domain :Autor ;
+         rdfs:range :Libro .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#despuesDe
+:despuesDe rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf owl:topObjectProperty ;
+           rdf:type owl:TransitiveProperty ;
+           rdfs:domain :Libro ;
+           rdfs:range :Libro .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#editorialDe
+:editorialDe rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Editorial ;
+             rdfs:range :Libro ,
+                        :MaterialIlustrado ,
+                        :PublicacionPeriodica .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#generoDe
+:generoDe rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdfs:domain :Genero ;
+          rdfs:range :Libro ,
+                     :MaterialIlustrado .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#mangakaDe
+:mangakaDe rdf:type owl:ObjectProperty ;
+           owl:inverseOf :tieneMangaka ;
+           rdf:type owl:InverseFunctionalProperty ;
+           rdfs:domain :Mangaka ;
+           rdfs:range :Manga .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#prestadoA
+:prestadoA rdf:type owl:ObjectProperty ;
+           rdfs:domain :Libro ;
+           rdfs:range :Socio .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#superheroeDe
+:superheroeDe rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf owl:topObjectProperty ;
+              owl:inverseOf :tieneSuperheroe ;
+              rdfs:domain :Superheroe ;
+              rdfs:range :Comic .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#tieneAutor
+:tieneAutor rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdf:type owl:InverseFunctionalProperty ;
+            rdfs:domain :Libro ;
+            rdfs:range :Autor .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#tieneEditorial
+:tieneEditorial rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf owl:topObjectProperty ;
+                rdfs:domain :Libro ,
+                            :MaterialIlustrado ,
+                            :PublicacionPeriodica ;
+                rdfs:range :Editorial .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#tieneGenero
+:tieneGenero rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:domain :Libro ,
+                         :MaterialIlustrado ;
+             rdfs:range :Genero .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#tieneMangaka
+:tieneMangaka rdf:type owl:ObjectProperty ,
+                       owl:FunctionalProperty ;
+              rdfs:domain :Manga ;
+              rdfs:range :Mangaka .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#tieneSuperheroe
+:tieneSuperheroe rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf owl:topObjectProperty ;
+                 rdfs:domain :Comic ;
+                 rdfs:range :Superheroe .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#ubicadoEn
+:ubicadoEn rdf:type owl:ObjectProperty ;
+           rdfs:domain :Libro ,
+                       :MaterialIlustrado ,
+                       :PublicacionPeriodica ;
+           rdfs:range :Ubicacion .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#añoDeNacimiento
+:añoDeNacimiento rdf:type owl:DatatypeProperty ;
+                 rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#tieneEdicion
+:tieneEdicion rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#tieneFechaPublicacion
+:tieneFechaPublicacion rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#tieneIdentificador
+:tieneIdentificador rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#tieneNombre
+:tieneNombre rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#tieneNumeroPublicacion
+:tieneNumeroPublicacion rdf:type owl:DatatypeProperty .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#tieneTitulo
+:tieneTitulo rdf:type owl:DatatypeProperty ;
+             rdfs:subPropertyOf owl:topDataProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Autor
+:Autor rdf:type owl:Class ;
+       rdfs:subClassOf :Persona .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Bibliotecario
+:Bibliotecario rdf:type owl:Class ;
+               rdfs:subClassOf :Persona ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :tieneIdentificador ;
+                                 owl:someValuesFrom xsd:int
+                               ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Comic
+:Comic rdf:type owl:Class ;
+       rdfs:subClassOf :MaterialIlustrado ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneSuperheroe ;
+                         owl:someValuesFrom :Superheroe
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneNumeroPublicacion ;
+                         owl:someValuesFrom xsd:int
+                       ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Disponible
+:Disponible rdf:type owl:Class ;
+            rdfs:subClassOf :Libro .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Editorial
+:Editorial rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :tieneNombre ;
+                             owl:someValuesFrom xsd:string
+                           ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Genero
+:Genero rdf:type owl:Class ;
+        rdfs:subClassOf [ rdf:type owl:Restriction ;
+                          owl:onProperty :tieneNombre ;
+                          owl:someValuesFrom xsd:string
+                        ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Libro
+:Libro rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneAutor ;
+                         owl:someValuesFrom :Autor
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneEditorial ;
+                         owl:someValuesFrom :Editorial
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneGenero ;
+                         owl:someValuesFrom :Genero
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :ubicadoEn ;
+                         owl:someValuesFrom :Ubicacion
+                       ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Manga
+:Manga rdf:type owl:Class ;
+       rdfs:subClassOf :MaterialIlustrado ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneMangaka ;
+                         owl:someValuesFrom :Mangaka
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneNumeroPublicacion ;
+                         owl:someValuesFrom xsd:int
+                       ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Mangaka
+:Mangaka rdf:type owl:Class ;
+         rdfs:subClassOf :Persona .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#MaterialIlustrado
+:MaterialIlustrado rdf:type owl:Class ;
+                   rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                     owl:onProperty :tieneEditorial ;
+                                     owl:someValuesFrom :Editorial
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :tieneGenero ;
+                                     owl:someValuesFrom :Genero
+                                   ] ,
+                                   [ rdf:type owl:Restriction ;
+                                     owl:onProperty :ubicadoEn ;
+                                     owl:someValuesFrom :Ubicacion
+                                   ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Periodico
+:Periodico rdf:type owl:Class ;
+           rdfs:subClassOf :PublicacionPeriodica ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :tieneFechaPublicacion ;
+                             owl:someValuesFrom xsd:dateTime
+                           ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Persona
+:Persona rdf:type owl:Class ;
+         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                           owl:onProperty :añoDeNacimiento ;
+                           owl:someValuesFrom xsd:dateTime
+                         ] ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :tieneNombre ;
+                           owl:someValuesFrom xsd:string
+                         ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Prestado
+:Prestado rdf:type owl:Class ;
+          rdfs:subClassOf :Libro ,
+                          [ rdf:type owl:Restriction ;
+                            owl:onProperty :prestadoA ;
+                            owl:someValuesFrom :Socio
+                          ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#PublicacionPeriodica
+:PublicacionPeriodica rdf:type owl:Class ;
+                      rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                        owl:onProperty :tieneEditorial ;
+                                        owl:someValuesFrom :Editorial
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :ubicadoEn ;
+                                        owl:someValuesFrom :Ubicacion
+                                      ] ,
+                                      [ rdf:type owl:Restriction ;
+                                        owl:onProperty :tieneNombre ;
+                                        owl:someValuesFrom xsd:string
+                                      ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Revista
+:Revista rdf:type owl:Class ;
+         rdfs:subClassOf :PublicacionPeriodica ,
+                         [ rdf:type owl:Restriction ;
+                           owl:onProperty :tieneEdicion ;
+                           owl:someValuesFrom xsd:string
+                         ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Socio
+:Socio rdf:type owl:Class ;
+       rdfs:subClassOf :Persona ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneIdentificador ;
+                         owl:someValuesFrom xsd:int
+                       ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Superheroe
+:Superheroe rdf:type owl:Class ;
+            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                              owl:onProperty :tieneNombre ;
+                              owl:someValuesFrom xsd:string
+                            ] .
+
+
+###  http://www.semanticweb.org/usuario/ontologies/2023/8/Biblioteca-Hemeroteca-Ludoteca#Ubicacion
+:Ubicacion rdf:type owl:Class ;
+           rdfs:subClassOf [ rdf:type owl:Restriction ;
+                             owl:onProperty :tieneNombre ;
+                             owl:someValuesFrom xsd:string
+                           ] .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
