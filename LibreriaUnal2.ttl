@@ -5,7 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix yago:	<http://dbpedia.org/class/yago/> .
+@prefix yago: <http://dbpedia.org/class/yago/> .
 @base <http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/> .
 
 <http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca> rdf:type owl:Ontology .
@@ -19,7 +19,7 @@
                   owl:SymmetricProperty ;
          rdfs:domain :Socio ;
          rdfs:range :Socio ;
-         rdfs:label "Amigo de" .
+         rdfs:label "amigode" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/antesDe
@@ -28,7 +28,7 @@
          rdf:type owl:TransitiveProperty ;
          rdfs:domain :Libro ;
          rdfs:range :Libro ;
-         rdfs:label "antes de" .
+         rdfs:label "antesde" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/autorDe
@@ -38,7 +38,7 @@
          rdf:type owl:InverseFunctionalProperty ;
          rdfs:domain :Autor ;
          rdfs:range :Libro ;
-         rdfs:label "autor de" .
+         rdfs:label "autorde" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/despuesDe
@@ -47,7 +47,7 @@
            rdf:type owl:TransitiveProperty ;
            rdfs:domain :Libro ;
            rdfs:range :Libro ;
-           rdfs:label "despues de" .
+           rdfs:label "despuesde" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/editorDe
@@ -55,7 +55,7 @@
           owl:inverseOf :tieneEditor ;
           rdfs:domain :Editor ;
           rdfs:range :PublicacionPeriodica ;
-          rdfs:label "editor de" .
+          rdfs:label "editorde" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/editorialDe
@@ -68,7 +68,7 @@
                                         :MaterialIlustrado
                                       )
                         ] ;
-             rdfs:label "editorial de" .
+             rdfs:label "editorialde" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/generoDe
@@ -80,7 +80,7 @@
                                      :MaterialIlustrado
                                    )
                      ] ;
-          rdfs:label "genero de" .
+          rdfs:label "generode" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/mangakaDe
@@ -89,7 +89,7 @@
            rdf:type owl:InverseFunctionalProperty ;
            rdfs:domain :Mangaka ;
            rdfs:range :Manga ;
-           rdfs:label "mangaka de" .
+           rdfs:label "mangakade" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/prestadoA
@@ -97,7 +97,7 @@
                     owl:FunctionalProperty ;
            rdfs:domain :Libro ;
            rdfs:range :Socio ;
-           rdfs:label "prestado a" .
+           rdfs:label "prestadoa" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/superheroeDe
@@ -106,7 +106,7 @@
               owl:inverseOf :tieneSuperheroe ;
               rdfs:domain :Superheroe ;
               rdfs:range :Comic ;
-              rdfs:label "superheroe de" .
+              rdfs:label "superheroede" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/tieneAutor
@@ -115,14 +115,14 @@
             rdf:type owl:FunctionalProperty ;
             rdfs:domain :Libro ;
             rdfs:range :Autor ;
-            rdfs:label "tiene autor" .
+            rdfs:label "tieneautor" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/tieneEditor
 :tieneEditor rdf:type owl:ObjectProperty ;
              rdfs:domain :PublicacionPeriodica ;
              rdfs:range :Editor ;
-             rdfs:label "tiene editor" .
+             rdfs:label "tieneeditor" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial
@@ -135,7 +135,7 @@
                                           )
                             ] ;
                 rdfs:range :Editorial ;
-                rdfs:label "tiene editorial" .
+                rdfs:label "tieneeditorial" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/tieneGenero
@@ -147,7 +147,7 @@
                                        )
                          ] ;
              rdfs:range :Genero ;
-             rdfs:label "tiene genero" .
+             rdfs:label "tienegenero" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/tieneMangaka
@@ -155,7 +155,7 @@
                        owl:FunctionalProperty ;
               rdfs:domain :Manga ;
               rdfs:range :Mangaka ;
-              rdfs:label "tiene mangaka" .
+              rdfs:label "tienemangaka" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/tieneSuperheroe
@@ -164,7 +164,7 @@
                  rdf:type owl:FunctionalProperty ;
                  rdfs:domain :Comic ;
                  rdfs:range :Superheroe ;
-                 rdfs:label "tiene superheroe" .
+                 rdfs:label "tienesuperheroe" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn
@@ -176,7 +176,7 @@
                                      )
                        ] ;
            rdfs:range :Ubicacion ;
-           rdfs:label "buscado en" .
+           rdfs:label "buscadoen" .
 
 
 #################################################################
@@ -244,10 +244,6 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca#Distribuidora
-:Distribuidora rdf:type owl:Class .
-
-
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Autor
 :Autor rdf:type owl:Class ;
        rdfs:subClassOf :Persona ;
@@ -295,9 +291,7 @@
            rdfs:subClassOf [ rdf:type owl:Restriction ;
                              owl:onProperty :tieneNombre ;
                              owl:someValuesFrom xsd:string
-                           ] ;
-           rdfs:label "Editoral";
-           owl:sameAs yago:Publisher108062623.
+                           ] .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Genero
@@ -312,16 +306,16 @@
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Libro
 :Libro rdf:type owl:Class ;
        rdfs:subClassOf [ rdf:type owl:Restriction ;
-                         owl:onProperty :tieneAutor ;
-                         owl:allValuesFrom :Autor
-                       ] ,
-                       [ rdf:type owl:Restriction ;
                          owl:onProperty :tieneEditorial ;
                          owl:someValuesFrom :Editorial
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :tieneGenero ;
                          owl:someValuesFrom :Genero
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneAutor ;
+                         owl:allValuesFrom :Autor
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :tieneTitulo ;
@@ -367,7 +361,7 @@
                                      owl:onProperty :ubicadoEn ;
                                      owl:someValuesFrom :Ubicacion
                                    ] ;
-                   rdfs:label "Material Ilustrado" .
+                   rdfs:label "MaterialIlustrado" .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Periodico
@@ -445,7 +439,7 @@
        owl:equivalentClass [ owl:intersectionOf ( :Persona
                                                   [ rdf:type owl:Restriction ;
                                                     owl:onProperty :tieneIdentificador ;
-                                                    owl:someValuesFrom xsd:int
+                                                    owl:allValuesFrom xsd:int
                                                   ]
                                                 ) ;
                              rdf:type owl:Class
@@ -478,6 +472,13 @@ foaf:Person rdf:type owl:Class .
 #################################################################
 #    Individuals
 #################################################################
+
+###  http://dbpedia.org/class/yago/Publisher108062623
+yago:Publisher108062623 rdf:type owl:NamedIndividual ;
+                        owl:sameAs :Editorial .
+
+
+###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Editorial
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/AnnaWintour
 :AnnaWintour rdf:type owl:NamedIndividual ,
@@ -565,6 +566,10 @@ foaf:Person rdf:type owl:Class .
 :Drama rdf:type owl:NamedIndividual ,
                 :Genero ;
        :tieneNombre "Drama" .
+
+
+###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Editorial
+:Editorial rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/ElColombiano
@@ -779,6 +784,13 @@ foaf:Person rdf:type owl:Class .
        :ubicadoEn :Hemeroteca ;
        :tieneEdicion "Abril 1984" ;
        :tieneNombre "Vouge" .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:Editorial rdfs:label "Editoral" .
 
 
 #################################################################
