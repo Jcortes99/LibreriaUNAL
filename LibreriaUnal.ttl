@@ -1,0 +1,813 @@
+@prefix : <http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix yago: <http://dbpedia.org/class/yago/> .
+@base <http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/> .
+
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/amigoDe
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/amigoDe> rdf:type owl:ObjectProperty ,
+                                                                        owl:SymmetricProperty ;
+                                                               rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Socio> ;
+                                                               rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Socio> ;
+                                                               rdfs:label "amigode" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/antesDe
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/antesDe> rdf:type owl:ObjectProperty ;
+                                                               owl:inverseOf <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/despuesDe> ;
+                                                               rdf:type owl:TransitiveProperty ;
+                                                               rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro> ;
+                                                               rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro> ;
+                                                               rdfs:label "antesde" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/autorDe
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/autorDe> rdf:type owl:ObjectProperty ;
+                                                               rdfs:subPropertyOf owl:topObjectProperty ;
+                                                               owl:inverseOf <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneAutor> ;
+                                                               rdf:type owl:InverseFunctionalProperty ;
+                                                               rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Autor> ;
+                                                               rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro> ;
+                                                               rdfs:label "autorde" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/despuesDe
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/despuesDe> rdf:type owl:ObjectProperty ;
+                                                                 rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                 rdf:type owl:TransitiveProperty ;
+                                                                 rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro> ;
+                                                                 rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro> ;
+                                                                 rdfs:label "despuesde" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorDe
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorDe> rdf:type owl:ObjectProperty ;
+                                                                owl:inverseOf <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditor> ;
+                                                                rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editor> ;
+                                                                rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/PublicacionPeriodica> ;
+                                                                rdfs:label "editorde" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                   owl:inverseOf <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial> ;
+                                                                   rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> ;
+                                                                   rdfs:range [ rdf:type owl:Class ;
+                                                                                owl:unionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro>
+                                                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/MaterialIlustrado>
+                                                                                            )
+                                                                              ] ;
+                                                                   rdfs:label "editorialde" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/generoDe
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/generoDe> rdf:type owl:ObjectProperty ;
+                                                                rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero> ;
+                                                                rdfs:range [ rdf:type owl:Class ;
+                                                                             owl:unionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro>
+                                                                                           <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/MaterialIlustrado>
+                                                                                         )
+                                                                           ] ;
+                                                                rdfs:label "generode" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/mangakaDe
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/mangakaDe> rdf:type owl:ObjectProperty ;
+                                                                 owl:inverseOf <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneMangaka> ;
+                                                                 rdf:type owl:InverseFunctionalProperty ;
+                                                                 rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Mangaka> ;
+                                                                 rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Manga> ;
+                                                                 rdfs:label "mangakade" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/prestadoA
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/prestadoA> rdf:type owl:ObjectProperty ,
+                                                                          owl:FunctionalProperty ;
+                                                                 rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro> ;
+                                                                 rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Socio> ;
+                                                                 rdfs:label "prestadoa" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/superheroeDe
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/superheroeDe> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                    owl:inverseOf <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneSuperheroe> ;
+                                                                    rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Superheroe> ;
+                                                                    rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Comic> ;
+                                                                    rdfs:label "superheroede" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneAutor
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneAutor> rdf:type owl:ObjectProperty ;
+                                                                  rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                  rdf:type owl:FunctionalProperty ;
+                                                                  rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro> ;
+                                                                  rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Autor> ;
+                                                                  rdfs:label "tieneautor" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditor
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditor> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/PublicacionPeriodica> ;
+                                                                   rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editor> ;
+                                                                   rdfs:label "tieneeditor" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial> rdf:type owl:ObjectProperty ;
+                                                                      rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                      rdf:type owl:FunctionalProperty ;
+                                                                      rdfs:domain [ rdf:type owl:Class ;
+                                                                                    owl:unionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro>
+                                                                                                  <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/MaterialIlustrado>
+                                                                                                )
+                                                                                  ] ;
+                                                                      rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> ;
+                                                                      rdfs:label "tieneeditorial" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> rdf:type owl:ObjectProperty ;
+                                                                   rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                   rdfs:domain [ rdf:type owl:Class ;
+                                                                                 owl:unionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro>
+                                                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/MaterialIlustrado>
+                                                                                             )
+                                                                               ] ;
+                                                                   rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero> ;
+                                                                   rdfs:label "tienegenero" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneMangaka
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneMangaka> rdf:type owl:ObjectProperty ,
+                                                                             owl:FunctionalProperty ;
+                                                                    rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Manga> ;
+                                                                    rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Mangaka> ;
+                                                                    rdfs:label "tienemangaka" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneSuperheroe
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneSuperheroe> rdf:type owl:ObjectProperty ;
+                                                                       rdfs:subPropertyOf owl:topObjectProperty ;
+                                                                       rdf:type owl:FunctionalProperty ;
+                                                                       rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Comic> ;
+                                                                       rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Superheroe> ;
+                                                                       rdfs:label "tienesuperheroe" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> rdf:type owl:ObjectProperty ;
+                                                                 rdfs:domain [ rdf:type owl:Class ;
+                                                                               owl:unionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro>
+                                                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/MaterialIlustrado>
+                                                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/PublicacionPeriodica>
+                                                                                           )
+                                                                             ] ;
+                                                                 rdfs:range <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ubicacion> ;
+                                                                 rdfs:label "buscadoen" .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> rdf:type owl:DatatypeProperty ;
+                                                                       rdfs:subPropertyOf owl:topDataProperty ;
+                                                                       rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona> ;
+                                                                       rdfs:range xsd:int .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEdicion
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEdicion> rdf:type owl:DatatypeProperty ;
+                                                                    rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Revista> ;
+                                                                    rdfs:range xsd:string .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneFechaPublicacion
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneFechaPublicacion> rdf:type owl:DatatypeProperty ;
+                                                                             rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Periodico> ;
+                                                                             rdfs:range xsd:int .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneIdentificador
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneIdentificador> rdf:type owl:DatatypeProperty ;
+                                                                          rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Socio> ;
+                                                                          rdfs:range xsd:int .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> rdf:type owl:DatatypeProperty ;
+                                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                                   rdfs:domain [ rdf:type owl:Class ;
+                                                                                 owl:unionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial>
+                                                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero>
+                                                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona>
+                                                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/PublicacionPeriodica>
+                                                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Superheroe>
+                                                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ubicacion>
+                                                                                             )
+                                                                               ] ;
+                                                                   rdfs:range xsd:string .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNumeroPublicacion
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNumeroPublicacion> rdf:type owl:DatatypeProperty ;
+                                                                              rdfs:domain [ rdf:type owl:Class ;
+                                                                                            owl:unionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Comic>
+                                                                                                          <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Manga>
+                                                                                                        )
+                                                                                          ] ;
+                                                                              rdfs:range xsd:int .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneTitulo
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneTitulo> rdf:type owl:DatatypeProperty ;
+                                                                   rdfs:subPropertyOf owl:topDataProperty ;
+                                                                   rdfs:domain <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro> ;
+                                                                   rdfs:range xsd:string .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Autor
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Autor> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona> ;
+                                                             rdfs:label "Autor" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Comic
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Comic> rdf:type owl:Class ;
+                                                             owl:equivalentClass [ owl:intersectionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/MaterialIlustrado>
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneSuperheroe> ;
+                                                                                                          owl:someValuesFrom <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Superheroe>
+                                                                                                        ]
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNumeroPublicacion> ;
+                                                                                                          owl:someValuesFrom xsd:int
+                                                                                                        ]
+                                                                                                      ) ;
+                                                                                   rdf:type owl:Class
+                                                                                 ] ;
+                                                             rdfs:label "Comic" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Disponible
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Disponible> rdf:type owl:Class ;
+                                                                  owl:equivalentClass [ owl:intersectionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro>
+                                                                                                             [ rdf:type owl:Restriction ;
+                                                                                                               owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> ;
+                                                                                                               owl:someValuesFrom <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ubicacion>
+                                                                                                             ]
+                                                                                                           ) ;
+                                                                                        rdf:type owl:Class
+                                                                                      ] ;
+                                                                  rdfs:label "LibroDisponible" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editor
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editor> rdf:type owl:Class ;
+                                                              rdfs:subClassOf <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona> ;
+                                                              rdfs:label "Editor" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> ;
+                                                                                   owl:someValuesFrom xsd:string
+                                                                                 ] .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero> rdf:type owl:Class ;
+                                                              rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> ;
+                                                                                owl:someValuesFrom xsd:string
+                                                                              ] ;
+                                                              rdfs:label "Genero" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro> rdf:type owl:Class ;
+                                                             rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial> ;
+                                                                               owl:someValuesFrom <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial>
+                                                                             ] ,
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> ;
+                                                                               owl:someValuesFrom <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero>
+                                                                             ] ,
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneAutor> ;
+                                                                               owl:allValuesFrom <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Autor>
+                                                                             ] ,
+                                                                             [ rdf:type owl:Restriction ;
+                                                                               owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneTitulo> ;
+                                                                               owl:someValuesFrom xsd:string
+                                                                             ] ;
+                                                             rdfs:label "Libro" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Manga
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Manga> rdf:type owl:Class ;
+                                                             owl:equivalentClass [ owl:intersectionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/MaterialIlustrado>
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneMangaka> ;
+                                                                                                          owl:someValuesFrom <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Mangaka>
+                                                                                                        ]
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNumeroPublicacion> ;
+                                                                                                          owl:someValuesFrom xsd:int
+                                                                                                        ]
+                                                                                                      ) ;
+                                                                                   rdf:type owl:Class
+                                                                                 ] ;
+                                                             rdfs:label "Manga" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Mangaka
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Mangaka> rdf:type owl:Class ;
+                                                               rdfs:subClassOf <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona> ;
+                                                               rdfs:label "Mangaka" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/MaterialIlustrado
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/MaterialIlustrado> rdf:type owl:Class ;
+                                                                         rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial> ;
+                                                                                           owl:someValuesFrom <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial>
+                                                                                         ] ,
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> ;
+                                                                                           owl:someValuesFrom <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero>
+                                                                                         ] ,
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> ;
+                                                                                           owl:someValuesFrom <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ubicacion>
+                                                                                         ] ;
+                                                                         rdfs:label "MaterialIlustrado" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Periodico
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Periodico> rdf:type owl:Class ;
+                                                                 owl:equivalentClass [ owl:intersectionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/PublicacionPeriodica>
+                                                                                                            [ rdf:type owl:Restriction ;
+                                                                                                              owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneFechaPublicacion> ;
+                                                                                                              owl:someValuesFrom xsd:int
+                                                                                                            ]
+                                                                                                          ) ;
+                                                                                       rdf:type owl:Class
+                                                                                     ] ;
+                                                                 rdfs:label "Periodico" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona> rdf:type owl:Class ;
+                                                               owl:equivalentClass foaf:Person ;
+                                                               rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> ;
+                                                                                 owl:someValuesFrom xsd:int
+                                                                               ] ,
+                                                                               [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> ;
+                                                                                 owl:someValuesFrom xsd:string
+                                                                               ] ;
+                                                               rdfs:label "Persona" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Prestado
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Prestado> rdf:type owl:Class ;
+                                                                owl:equivalentClass [ owl:intersectionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro>
+                                                                                                           [ rdf:type owl:Restriction ;
+                                                                                                             owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/prestadoA> ;
+                                                                                                             owl:someValuesFrom <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Socio>
+                                                                                                           ]
+                                                                                                         ) ;
+                                                                                      rdf:type owl:Class
+                                                                                    ] ;
+                                                                rdfs:label "LibroPrestado" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/PublicacionPeriodica
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/PublicacionPeriodica> rdf:type owl:Class ;
+                                                                            rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditor> ;
+                                                                                              owl:someValuesFrom <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editor>
+                                                                                            ] ,
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> ;
+                                                                                              owl:someValuesFrom <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ubicacion>
+                                                                                            ] ,
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> ;
+                                                                                              owl:someValuesFrom xsd:string
+                                                                                            ] ;
+                                                                            rdfs:label "Publicacion periodica" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Revista
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Revista> rdf:type owl:Class ;
+                                                               owl:equivalentClass [ owl:intersectionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/PublicacionPeriodica>
+                                                                                                          [ rdf:type owl:Restriction ;
+                                                                                                            owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEdicion> ;
+                                                                                                            owl:someValuesFrom xsd:string
+                                                                                                          ]
+                                                                                                        ) ;
+                                                                                     rdf:type owl:Class
+                                                                                   ] ;
+                                                               rdfs:label "Revista" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Socio
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Socio> rdf:type owl:Class ;
+                                                             owl:equivalentClass [ owl:intersectionOf ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona>
+                                                                                                        [ rdf:type owl:Restriction ;
+                                                                                                          owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneIdentificador> ;
+                                                                                                          owl:allValuesFrom xsd:int
+                                                                                                        ]
+                                                                                                      ) ;
+                                                                                   rdf:type owl:Class
+                                                                                 ] ;
+                                                             rdfs:label "Socio" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Superheroe
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Superheroe> rdf:type owl:Class ;
+                                                                  rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                    owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> ;
+                                                                                    owl:someValuesFrom xsd:string
+                                                                                  ] ;
+                                                                  rdfs:label "SuperHeroe" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ubicacion
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ubicacion> rdf:type owl:Class ;
+                                                                 rdfs:subClassOf [ rdf:type owl:Restriction ;
+                                                                                   owl:onProperty <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> ;
+                                                                                   owl:someValuesFrom xsd:string
+                                                                                 ] ;
+                                                                 rdfs:label "Ubicacion" .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://dbpedia.org/class/yago/Publisher108062623
+yago:Publisher108062623 rdf:type owl:NamedIndividual ;
+                        owl:sameAs <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/AnnaWintour
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/AnnaWintour> rdf:type owl:NamedIndividual ,
+                                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editor> ;
+                                                                   <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Vouge> ;
+                                                                   <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1949"^^xsd:int ;
+                                                                   <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Anna Wintour" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Aventura
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Aventura> rdf:type owl:NamedIndividual ,
+                                                                         <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Aventura" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Berserker
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Berserker> rdf:type owl:NamedIndividual ;
+                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Tragedia> ;
+                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneMangaka> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Miura> ;
+                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ludoteca> ;
+                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNumeroPublicacion> "10"^^xsd:int .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Biblioteca
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Biblioteca> rdf:type owl:NamedIndividual ,
+                                                                           <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ubicacion> ;
+                                                                  <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Biblioteca" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CienAños
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CienAños> rdf:type owl:NamedIndividual ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/antesDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TiemposColera> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneAutor> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Gabo> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/RealismoMagico> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Biblioteca> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneTitulo> "Cien Años De Soledad" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Comedia
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Comedia> rdf:type owl:NamedIndividual ,
+                                                                        <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero> ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Comedia" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CoronelNoTiene
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CoronelNoTiene> rdf:type owl:NamedIndividual ;
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/antesDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CienAños> ;
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneAutor> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Gabo> ;
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Suspenso> ;
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Biblioteca> ;
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneTitulo> "El Coronel No Tiene Quien Le Escriba" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/DC
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/DC> rdf:type owl:NamedIndividual ,
+                                                                   <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> ;
+                                                          <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheFlash> ;
+                                                          <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Detective Comics" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/DanielRivera
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/DanielRivera> rdf:type owl:NamedIndividual ,
+                                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editor> ;
+                                                                    <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ElColombiano> ;
+                                                                    <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1980"^^xsd:int ;
+                                                                    <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Daniel Rivera Marín" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Dante
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Dante> rdf:type owl:NamedIndividual ,
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Autor> ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1321"^^xsd:int ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Dante Alighieri" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/DivinaComedia
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/DivinaComedia> rdf:type owl:NamedIndividual ;
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/prestadoA> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Juan> ;
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneAutor> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Dante> ;
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Tragedia> ;
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneTitulo> "La Divina Comedia" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Drama
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Drama> rdf:type owl:NamedIndividual ,
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero> ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Drama" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> rdf:type owl:NamedIndividual .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ElColombiano
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ElColombiano> rdf:type owl:NamedIndividual ;
+                                                                    <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hemeroteca> ;
+                                                                    <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneFechaPublicacion> "2011"^^xsd:int ;
+                                                                    <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "El Colombiano" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ElEspectador
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ElEspectador> rdf:type owl:NamedIndividual ;
+                                                                    <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hemeroteca> ;
+                                                                    <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneFechaPublicacion> "1993"^^xsd:int ;
+                                                                    <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "El Espectador" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/FidelCano
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/FidelCano> rdf:type owl:NamedIndividual ,
+                                                                          <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editor> ;
+                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ElEspectador> ;
+                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> 1965 ;
+                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Fidel Cano Correa" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Flash
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Flash> rdf:type owl:NamedIndividual ,
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Superheroe> ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Flash" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Forbes
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Forbes> rdf:type owl:NamedIndividual ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hemeroteca> ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEdicion> "Abril 2011" ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Forbes" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Gabo
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Gabo> rdf:type owl:NamedIndividual ,
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Autor> ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1927"^^xsd:int ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Gabriel Garcia Marquez" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hakusensha
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hakusensha> rdf:type owl:NamedIndividual ,
+                                                                           <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> ;
+                                                                  <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Berserker> ;
+                                                                  <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Hakusensha" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hemeroteca
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hemeroteca> rdf:type owl:NamedIndividual ,
+                                                                           <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ubicacion> ;
+                                                                  <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Hemeroteca" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hulk
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hulk> rdf:type owl:NamedIndividual ,
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Superheroe> ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Hulk" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hunter
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hunter> rdf:type owl:NamedIndividual ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Aventura> ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneMangaka> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Togashi> ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ludoteca> ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNumeroPublicacion> "1"^^xsd:int .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Juan
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Juan> rdf:type owl:NamedIndividual ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/amigoDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luna> ,
+                                                                                                                           <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Marta> ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "2010"^^xsd:int ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneIdentificador> "40001"^^xsd:int ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Juan Jaramillo" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ludoteca
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ludoteca> rdf:type owl:NamedIndividual ,
+                                                                         <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ubicacion> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Ludoteca" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luis
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luis> rdf:type owl:NamedIndividual ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1990"^^xsd:int ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneIdentificador> "30001"^^xsd:int ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Luis Lagos" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luna
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luna> rdf:type owl:NamedIndividual ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1980"^^xsd:int ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneIdentificador> "20001"^^xsd:int ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Luna Lunera" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Marta
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Marta> rdf:type owl:NamedIndividual ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "2000"^^xsd:int ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneIdentificador> "10001"^^xsd:int ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Marta Martinez" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Marvel
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Marvel> rdf:type owl:NamedIndividual ,
+                                                                       <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheHulk> ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Marvel Comics" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Miura
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Miura> rdf:type owl:NamedIndividual ,
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Mangaka> ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1966"^^xsd:int ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Kentaro Miura" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Norma
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Norma> rdf:type owl:NamedIndividual ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CoronelNoTiene> ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Editorial Norma" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Penguin
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Penguin> rdf:type owl:NamedIndividual ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/DivinaComedia> ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Penguin Random House" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Planeta
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Planeta> rdf:type owl:NamedIndividual ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CienAños> ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Editorial Planeta" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/RealismoMagico
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/RealismoMagico> rdf:type owl:NamedIndividual ,
+                                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero> ;
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Realismo Magico" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Shukan
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Shukan> rdf:type owl:NamedIndividual ,
+                                                                       <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hunter> ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Shukan Shonen Jump" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/SteveForbes
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/SteveForbes> rdf:type owl:NamedIndividual ,
+                                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editor> ;
+                                                                   <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Forbes> ;
+                                                                   <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1947"^^xsd:int ;
+                                                                   <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Steve Forbes" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Suspenso
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Suspenso> rdf:type owl:NamedIndividual ,
+                                                                         <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Suspenso" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheFlash
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheFlash> rdf:type owl:NamedIndividual ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Comedia> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneSuperheroe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Flash> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ludoteca> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNumeroPublicacion> "1"^^xsd:int .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheHulk
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheHulk> rdf:type owl:NamedIndividual ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Drama> ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneSuperheroe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hulk> ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ludoteca> ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNumeroPublicacion> "15"^^xsd:int .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TiemposColera
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TiemposColera> rdf:type owl:NamedIndividual ;
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/prestadoA> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luna> ;
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneAutor> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Gabo> ;
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Universal> ;
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/RealismoMagico> ;
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneTitulo> "El amor En Tiempos De Colera" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Togashi
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Togashi> rdf:type owl:NamedIndividual ,
+                                                                        <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Mangaka> ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1966"^^xsd:int ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Yoshihiro Togashi" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Tragedia
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Tragedia> rdf:type owl:NamedIndividual ,
+                                                                         <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Tragedia" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Universal
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Universal> rdf:type owl:NamedIndividual ;
+                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Editorial Universal" .
+
+
+###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Vouge
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Vouge> rdf:type owl:NamedIndividual ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hemeroteca> ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEdicion> "Abril 1984" ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Vouge" .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> rdfs:label "Editoral" .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial>
+                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Genero>
+                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Libro>
+                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/MaterialIlustrado>
+                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona>
+                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/PublicacionPeriodica>
+                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Superheroe>
+                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ubicacion>
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
