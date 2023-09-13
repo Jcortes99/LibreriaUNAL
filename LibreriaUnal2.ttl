@@ -5,7 +5,7 @@
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@prefix yago:	<http://dbpedia.org/class/yago/> .
+@prefix yago: <http://dbpedia.org/class/yago/> .
 @base <http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/> .
 
 <http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca> rdf:type owl:Ontology .
@@ -244,10 +244,6 @@
 #    Classes
 #################################################################
 
-###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca#Distribuidora
-:Distribuidora rdf:type owl:Class .
-
-
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Autor
 :Autor rdf:type owl:Class ;
        rdfs:subClassOf :Persona ;
@@ -295,9 +291,7 @@
            rdfs:subClassOf [ rdf:type owl:Restriction ;
                              owl:onProperty :tieneNombre ;
                              owl:someValuesFrom xsd:string
-                           ] ;
-           rdfs:label "Editoral";
-           owl:sameAs yago:Publisher108062623.
+                           ] .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Genero
@@ -312,16 +306,16 @@
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Libro
 :Libro rdf:type owl:Class ;
        rdfs:subClassOf [ rdf:type owl:Restriction ;
-                         owl:onProperty :tieneAutor ;
-                         owl:allValuesFrom :Autor
-                       ] ,
-                       [ rdf:type owl:Restriction ;
                          owl:onProperty :tieneEditorial ;
                          owl:someValuesFrom :Editorial
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :tieneGenero ;
                          owl:someValuesFrom :Genero
+                       ] ,
+                       [ rdf:type owl:Restriction ;
+                         owl:onProperty :tieneAutor ;
+                         owl:allValuesFrom :Autor
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :tieneTitulo ;
@@ -445,7 +439,7 @@
        owl:equivalentClass [ owl:intersectionOf ( :Persona
                                                   [ rdf:type owl:Restriction ;
                                                     owl:onProperty :tieneIdentificador ;
-                                                    owl:someValuesFrom xsd:int
+                                                    owl:allValuesFrom xsd:int
                                                   ]
                                                 ) ;
                              rdf:type owl:Class
@@ -478,6 +472,15 @@ foaf:Person rdf:type owl:Class .
 #################################################################
 #    Individuals
 #################################################################
+
+###  http://dbpedia.org/class/yago/Publisher108062623
+yago:Publisher108062623 rdf:type owl:NamedIndividual ;
+                        owl:sameAs :Editorial .
+
+
+###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Editorial
+:Editorial rdf:type owl:NamedIndividual .
+
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/AnnaWintour
 :AnnaWintour rdf:type owl:NamedIndividual ,
@@ -565,6 +568,10 @@ foaf:Person rdf:type owl:Class .
 :Drama rdf:type owl:NamedIndividual ,
                 :Genero ;
        :tieneNombre "Drama" .
+
+
+###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Editorial
+:Editorial rdf:type owl:NamedIndividual .
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/ElColombiano
@@ -779,6 +786,13 @@ foaf:Person rdf:type owl:Class .
        :ubicadoEn :Hemeroteca ;
        :tieneEdicion "Abril 1984" ;
        :tieneNombre "Vouge" .
+
+
+#################################################################
+#    Annotations
+#################################################################
+
+:Editorial rdfs:label "Editoral" .
 
 
 #################################################################
