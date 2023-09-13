@@ -3,7 +3,9 @@
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix yago:	<http://dbpedia.org/class/yago/> .
 @base <http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/> .
 
 <http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca> rdf:type owl:Ontology .
@@ -242,6 +244,10 @@
 #    Classes
 #################################################################
 
+###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca#Distribuidora
+:Distribuidora rdf:type owl:Class .
+
+
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Autor
 :Autor rdf:type owl:Class ;
        rdfs:subClassOf :Persona ;
@@ -290,7 +296,8 @@
                              owl:onProperty :tieneNombre ;
                              owl:someValuesFrom xsd:string
                            ] ;
-           rdfs:label "Editoral" .
+           rdfs:label "Editoral";
+           owl:sameAs yago:Publisher108062623.
 
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Genero
@@ -306,7 +313,7 @@
 :Libro rdf:type owl:Class ;
        rdfs:subClassOf [ rdf:type owl:Restriction ;
                          owl:onProperty :tieneAutor ;
-                         owl:someValuesFrom :Autor
+                         owl:allValuesFrom :Autor
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :tieneEditorial ;
@@ -378,6 +385,7 @@
 
 ###  http://www.semanticweb.org/Biblioteca-Hemeroteca-Ludoteca/Persona
 :Persona rdf:type owl:Class ;
+         owl:equivalentClass foaf:Person ;
          rdfs:subClassOf [ rdf:type owl:Restriction ;
                            owl:onProperty :añoDeNacimiento ;
                            owl:someValuesFrom xsd:int
@@ -461,6 +469,10 @@
                              owl:someValuesFrom xsd:string
                            ] ;
            rdfs:label "Ubicacion" .
+
+
+###  http://xmlns.com/foaf/0.1/Person
+foaf:Person rdf:type owl:Class .
 
 
 #################################################################
