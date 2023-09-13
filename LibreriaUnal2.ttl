@@ -313,7 +313,7 @@
 :Libro rdf:type owl:Class ;
        rdfs:subClassOf [ rdf:type owl:Restriction ;
                          owl:onProperty :tieneAutor ;
-                         owl:someValuesFrom :Autor
+                         owl:allValuesFrom :Autor
                        ] ,
                        [ rdf:type owl:Restriction ;
                          owl:onProperty :tieneEditorial ;
