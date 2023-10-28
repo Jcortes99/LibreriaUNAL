@@ -1,0 +1,66 @@
+@prefix mundo: <http://mundo.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+mundo:Persona rdf:type rdfs:Class;
+    rdfs:comment "Esta clase sirve para instanciar Personas con su nombre y año de nacimiento".
+
+mundo:Actor a rdfs:Class;
+    rdfs:subClassOf mundo:Persona;
+    rdfs:comment "Esta clase sirve para instanciar Actores, que es subclase de Persona y tiene adicional la opción de interpretar a un Personaje".
+
+mundo:Personaje a rdfs:Class;
+    rdfs:subClassOf mundo:Actor;
+    rdfs:comment "Esta clase sirve para instanciar Personajes, que es subclase de Actor, por lo tanto tambien subclase de Persona y tiene adicional la opción de ser interpretado por un Actor".
+
+    
+mundo:Pelicula a rdfs:Class;
+    rdfs:comment "Esta clase sirve para instanciar Peliculas, comparte nombre con la clase Persona".
+
+mundo:tienePersonajes a rdf:Property;
+    rdfs:domain mundo:Pelicula;
+    rdfs:range mundo:Personaje.
+
+mundo:interpretar a rdf:Property;
+    rdfs:domain mundo:Actor;
+    rdfs:range mundo:Personaje.
+
+mundo:interpretado a rdf:Property;
+    rdfs:domain mundo:Personaje;
+    rdfs:range mundo:Actor.
+
+mundo:Año a rdf:Property;
+    rdfs:range xsd:int.
+
+mundo:nacimiento a rdf:Property;
+    rdfs:subPropertyOf mundo:Año;
+    rdfs:domain mundo:Persona.
+
+mundo:amistad a rdf:Property;
+    rdfs:domain mundo:Persona;
+    rdfs:range mundo:Persona.
+
+mundo:nombre a rdf:Property;
+    rdfs:domain mundo:Persona,
+                mundo:Pelicula;
+    rdfs:range xsd:string.
+
+mundo:Luis a mundo:Persona;
+    mundo:nombre "Luis";
+    mundo:nacimiento 2001.
+
+mundo:Juan a mundo:Actor;
+    mundo:nombre "Juan";
+    mundo:nacimiento 2000;
+    mundo:interpretar "Manuel";
+    mundo:amistad "Luis".
+
+mundo:Manuel a mundo:Personaje;
+    mundo:nombre "Manuel";
+    mundo:nacimiento 1890;
+    mundo:interpretado "Juan".
+
+mundo:Saw a mundo:Pelicula;
+    mundo:nombre "Saw";
+    mundo:tienePersonajes "Manuel".

@@ -1,0 +1,22 @@
+@prefix book: <http://book.org/>.
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#>.
+
+book:Hamlet
+ book:ISBN "1613820917"^^xsd:integer;
+ book:Titulo "Hamlet"^^xsd:string;
+ book:Autor "W. Shakespeare"^^xsd:string;
+ book:Edición "N.D"^^xsd:string;
+ book:Editorial "Simon & Brown"^^xsd:string;
+ book:Paginas "330"^^xsd:integer;
+ book:Publicacion "2011"^^xsd:gYear;
+ book:Idioma "Ingles"^^xsd:string.
+
+book:LordOfTheRings
+ book:ISBN "9780544003415"^^xsd:integer;
+ book:Titulo "El señor de los anillos"^^xsd:string;
+ book:Autor "J. R. R. Tolkien"^^xsd:string;
+ book:Edición "Primera"^^xsd:string;
+ book:Editorial "William Morrow Paperbacks"^^xsd:string;
+ book:Paginas "1216"^^xsd:integer;
+ book:Publicacion "2012"^^xsd:gYear;
+ book:Idioma "Ingles"^^xsd:string.

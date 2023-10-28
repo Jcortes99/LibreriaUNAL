@@ -1,0 +1,42 @@
+@prefix evento: <http://evento.org/>.
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+
+evento:Evento
+    evento:Invitados[
+        a rdf:Seq ;
+        rdf:_1 "Alan Turing";
+        rdf:_2 "John Von Neumann";
+        rdf:_3 "Steve Jobs";
+    ];
+    evento:fecha[
+        evento:dia[
+            a rdf:Alt ;
+            rdf:_1 "Lunes";
+            rdf:_2 "Martes";
+            rdf:_3 "Miercoles";
+            rdf:_4 "Jueves";
+            rdf:_5 "Viernes";
+            rdf:_6 "Sabado";
+            rdf:_7 "Domingo";
+        ];
+        evento:mes[
+            a rdf:Alt ;
+            rdf:_1 "Enero";
+            rdf:_2 "Febrero";
+            rdf:_3 "Marzo";
+            rdf:_4 "Abril";
+            rdf:_5 "Mayo";
+            rdf:_6 "Junio";
+            rdf:_7 "Julio";
+            rdf:_8 "Agosto";
+            rdf:_9 "Septiembre";
+            rdf:_10 "Octubre";
+            rdf:_11 "Noviembre";
+            rdf:_12 "Diciembre";
+        ]
+    ];
+    evento:Empleados[
+        evento:Meseros("Alejandro" "Santiago");
+        evento:Ayudantes("Adriana" "Juan");
+    ].
+

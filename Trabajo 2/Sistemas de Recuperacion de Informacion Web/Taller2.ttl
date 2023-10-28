@@ -1,0 +1,366 @@
+@prefix : <http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2/> .
+
+<http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#has-Base
+:has-Base rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :has-Ingredient ;
+          rdf:type owl:FunctionalProperty ;
+          rdfs:domain :Pizza ;
+          rdfs:range :Pizza-Base .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#has-Ingredient
+:has-Ingredient rdf:type owl:ObjectProperty ;
+                owl:inverseOf :is-Ingredient-Of .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#has-Topping
+:has-Topping rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :has-Ingredient ;
+             rdfs:domain :Pizza ;
+             rdfs:range :Pizza-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#is-Base-Of
+:is-Base-Of rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :is-Ingredient-Of .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#is-Ingredient-Of
+:is-Ingredient-Of rdf:type owl:ObjectProperty ,
+                           owl:TransitiveProperty .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#is-Topping-Of
+:is-Topping-Of rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :is-Ingredient-Of .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#American-Hot-Pizza
+:American-Hot-Pizza rdf:type owl:Class ;
+                    rdfs:subClassOf :Named-Pizza ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :has-Topping ;
+                                      owl:someValuesFrom :Jalapeno-Pepper-Topping
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :has-Topping ;
+                                      owl:someValuesFrom :Mozzarella-Topping
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :has-Topping ;
+                                      owl:someValuesFrom :Pepperoni-Topping
+                                    ] ,
+                                    [ rdf:type owl:Restriction ;
+                                      owl:onProperty :has-Topping ;
+                                      owl:someValuesFrom :Tomato-Topping
+                                    ] .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#American-Pizza
+:American-Pizza rdf:type owl:Class ;
+                rdfs:subClassOf :Named-Pizza ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-Topping ;
+                                  owl:someValuesFrom :Mozzarella-Topping
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-Topping ;
+                                  owl:someValuesFrom :Pepperoni-Topping
+                                ] ,
+                                [ rdf:type owl:Restriction ;
+                                  owl:onProperty :has-Topping ;
+                                  owl:someValuesFrom :Tomato-Topping
+                                ] .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Anchovy-Topping
+:Anchovy-Topping rdf:type owl:Class ;
+                 rdfs:subClassOf :Seafood-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Caper-Topping
+:Caper-Topping rdf:type owl:Class ;
+               rdfs:subClassOf :Vegetable-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Cheese-Topping
+:Cheese-Topping rdf:type owl:Class ;
+                rdfs:subClassOf :Pizza-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Cheesy-Pizza
+:Cheesy-Pizza rdf:type owl:Class ;
+              owl:equivalentClass [ owl:intersectionOf ( :Pizza
+                                                         [ rdf:type owl:Restriction ;
+                                                           owl:onProperty :has-Topping ;
+                                                           owl:someValuesFrom :Cheese-Topping
+                                                         ]
+                                                       ) ;
+                                    rdf:type owl:Class
+                                  ] .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Deep-Pan-Base
+:Deep-Pan-Base rdf:type owl:Class ;
+               rdfs:subClassOf :Pizza-Base ;
+               owl:disjointWith :Thin-And-Crispy-Base .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Green-Pepper-Topping
+:Green-Pepper-Topping rdf:type owl:Class ;
+                      rdfs:subClassOf :Pepper-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Ham-Topping
+:Ham-Topping rdf:type owl:Class ;
+             rdfs:subClassOf :Meat-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Jalapeno-Pepper-Topping
+:Jalapeno-Pepper-Topping rdf:type owl:Class ;
+                         rdfs:subClassOf :Pepper-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Margherita-Pizza
+:Margherita-Pizza rdf:type owl:Class ;
+                  rdfs:subClassOf :Named-Pizza ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :has-Topping ;
+                                    owl:someValuesFrom :Mozzarella-Topping
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :has-Topping ;
+                                    owl:someValuesFrom :Tomato-Topping
+                                  ] .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Meat-Topping
+:Meat-Topping rdf:type owl:Class ;
+              rdfs:subClassOf :Pizza-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Mozzarella-Topping
+:Mozzarella-Topping rdf:type owl:Class ;
+                    rdfs:subClassOf :Cheese-Topping ;
+                    owl:disjointWith :Parmezan-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Mushroom-Topping
+:Mushroom-Topping rdf:type owl:Class ;
+                  rdfs:subClassOf :Vegetable-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Named-Pizza
+:Named-Pizza rdf:type owl:Class ;
+             rdfs:subClassOf :Pizza .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Olive-Topping
+:Olive-Topping rdf:type owl:Class ;
+               rdfs:subClassOf :Vegetable-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Onion-Topping
+:Onion-Topping rdf:type owl:Class ;
+               rdfs:subClassOf :Vegetable-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Parmezan-Topping
+:Parmezan-Topping rdf:type owl:Class ;
+                  rdfs:subClassOf :Cheese-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Pepper-Topping
+:Pepper-Topping rdf:type owl:Class ;
+                rdfs:subClassOf :Vegetable-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Pepperoni-Topping
+:Pepperoni-Topping rdf:type owl:Class ;
+                   rdfs:subClassOf :Meat-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Pizza
+:Pizza rdf:type owl:Class ;
+       rdfs:subClassOf [ rdf:type owl:Restriction ;
+                         owl:onProperty :has-Base ;
+                         owl:someValuesFrom :Pizza-Base
+                       ] .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Pizza-Base
+:Pizza-Base rdf:type owl:Class .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Pizza-Topping
+:Pizza-Topping rdf:type owl:Class .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Prawn-Topping
+:Prawn-Topping rdf:type owl:Class ;
+               rdfs:subClassOf :Seafood-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Probe-Inconsistent-Topping
+:Probe-Inconsistent-Topping rdf:type owl:Class ;
+                            rdfs:subClassOf :Cheese-Topping ,
+                                            :Vegetable-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Red-Pepper-Topping
+:Red-Pepper-Topping rdf:type owl:Class ;
+                    rdfs:subClassOf :Pepper-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Salami-Topping
+:Salami-Topping rdf:type owl:Class ;
+                rdfs:subClassOf :Meat-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Seafood-Topping
+:Seafood-Topping rdf:type owl:Class ;
+                 rdfs:subClassOf :Pizza-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Soho-Pizza
+:Soho-Pizza rdf:type owl:Class ;
+            rdfs:subClassOf :Named-Pizza ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :has-Topping ;
+                              owl:someValuesFrom :Mozzarella-Topping
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :has-Topping ;
+                              owl:someValuesFrom :Olive-Topping
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :has-Topping ;
+                              owl:someValuesFrom :Parmezan-Topping
+                            ] ,
+                            [ rdf:type owl:Restriction ;
+                              owl:onProperty :has-Topping ;
+                              owl:someValuesFrom :Tomato-Topping
+                            ] .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Spicy-Beef-Topping
+:Spicy-Beef-Topping rdf:type owl:Class ;
+                    rdfs:subClassOf :Meat-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Thin-And-Crispy-Base
+:Thin-And-Crispy-Base rdf:type owl:Class ;
+                      rdfs:subClassOf :Pizza-Base .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Tomato-Topping
+:Tomato-Topping rdf:type owl:Class ;
+                rdfs:subClassOf :Vegetable-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Tuna-Topping
+:Tuna-Topping rdf:type owl:Class ;
+              rdfs:subClassOf :Seafood-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Vegetable-Topping
+:Vegetable-Topping rdf:type owl:Class ;
+                   rdfs:subClassOf :Pizza-Topping .
+
+
+###  http://www.sistemasderecuperaciondeinformacionweb.org/giraldodanilo/2023/onto-taller2#Vegetarian-Pizza
+:Vegetarian-Pizza rdf:type owl:Class ;
+                  rdfs:subClassOf :Pizza ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :has-Topping ;
+                                    owl:allValuesFrom [ rdf:type owl:Class ;
+                                                        owl:unionOf ( :Cheese-Topping
+                                                                      :Vegetable-Topping
+                                                                    )
+                                                      ]
+                                  ] .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :American-Hot-Pizza
+                :American-Pizza
+                :Margherita-Pizza
+                :Soho-Pizza
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Anchovy-Topping
+                :Prawn-Topping
+                :Tuna-Topping
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Caper-Topping
+                :Mushroom-Topping
+                :Olive-Topping
+                :Onion-Topping
+                :Pepper-Topping
+                :Tomato-Topping
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Cheese-Topping
+                :Meat-Topping
+                :Seafood-Topping
+                :Vegetable-Topping
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Green-Pepper-Topping
+                :Jalapeno-Pepper-Topping
+                :Red-Pepper-Topping
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Ham-Topping
+                :Pepperoni-Topping
+                :Salami-Topping
+                :Spicy-Beef-Topping
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Pizza
+                :Pizza-Base
+                :Pizza-Topping
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
