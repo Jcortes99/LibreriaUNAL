@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:book="http://book.org/">
+
+  <rdf:Description rdf:about="http://book.org/Hamlet">
+    <book:ISBN rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1613820917</book:ISBN>
+    <book:Titulo>Hamlet</book:Titulo>
+    <book:Autor>
+        <rdf:Description>
+        <book:Nombre>W. Shakespeare</book:Nombre>
+        <book:Nacimiento>1564</book:Nacimiento>
+        <book:Pais>Inglaterra</book:Pais>
+        </rdf:Description>
+    </book:Autor>
+    <book:Edición>N.D</book:Edición>
+    <book:Editorial>Simon &amp; Brown</book:Editorial>
+    <book:Paginas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">330</book:Paginas>
+    <book:Publicacion>2011</book:Publicacion>
+    <book:Idioma>Ingles</book:Idioma>
+  </rdf:Description>
+
+  <rdf:Description rdf:about="http://book.org/LordOfTheRings">
+    <book:ISBN rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">9780544003415</book:ISBN>
+    <book:Titulo>El señor de los anillos</book:Titulo>
+    <book:Autor>
+        <rdf:Description>
+        <book:Nombre>J. R. R. Tolkien</book:Nombre>
+        <book:Nacimiento>1892</book:Nacimiento>
+        <book:Pais>Inglaterra</book:Pais>
+        </rdf:Description>
+    </book:Autor>
+    <book:Edición>Primera</book:Edición>
+    <book:Editorial>William Morrow Paperbacks</book:Editorial>
+    <book:Paginas rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1216</book:Paginas>
+    <book:Publicacion>2012</book:Publicacion>
+    <book:Idioma>Ingles</book:Idioma>
+  </rdf:Description>
+
+</rdf:RDF>

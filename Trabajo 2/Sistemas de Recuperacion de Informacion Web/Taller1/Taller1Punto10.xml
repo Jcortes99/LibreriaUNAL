@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:ns0="http://mundo.org/">
+
+  <rdfs:Class rdf:about="http://mundo.org/Persona">
+    <rdfs:comment>Esta clase sirve para instanciar Personas con su nombre y año de nacimiento</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://mundo.org/Actor">
+    <rdfs:subClassOf rdf:resource="http://mundo.org/Persona"/>
+    <rdfs:comment>Esta clase sirve para instanciar Actores, que es subclase de Persona y tiene adicional la opción de interpretar a un Personaje</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://mundo.org/Personaje">
+    <rdfs:subClassOf rdf:resource="http://mundo.org/Actor"/>
+    <rdfs:comment>Esta clase sirve para instanciar Personajes, que es subclase de Actor, por lo tanto tambien subclase de Persona y tiene adicional la opción de ser interpretado por un Actor</rdfs:comment>
+  </rdfs:Class>
+
+  <rdfs:Class rdf:about="http://mundo.org/Pelicula">
+    <rdfs:comment>Esta clase sirve para instanciar Peliculas, comparte nombre con la clase Persona</rdfs:comment>
+  </rdfs:Class>
+
+  <rdf:Property rdf:about="http://mundo.org/tienePersonajes">
+    <rdfs:domain rdf:resource="http://mundo.org/Pelicula"/>
+    <rdfs:range rdf:resource="http://mundo.org/Personaje"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://mundo.org/interpretar">
+    <rdfs:domain rdf:resource="http://mundo.org/Actor"/>
+    <rdfs:range rdf:resource="http://mundo.org/Personaje"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://mundo.org/interpretado">
+    <rdfs:domain rdf:resource="http://mundo.org/Personaje"/>
+    <rdfs:range rdf:resource="http://mundo.org/Actor"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://mundo.org/Año">
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#int"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://mundo.org/nacimiento">
+    <rdfs:subPropertyOf rdf:resource="http://mundo.org/Año"/>
+    <rdfs:domain rdf:resource="http://mundo.org/Persona"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://mundo.org/amistad">
+    <rdfs:domain rdf:resource="http://mundo.org/Persona"/>
+    <rdfs:range rdf:resource="http://mundo.org/Persona"/>
+  </rdf:Property>
+
+  <rdf:Property rdf:about="http://mundo.org/nombre">
+    <rdfs:domain rdf:resource="http://mundo.org/Persona"/>
+    <rdfs:domain rdf:resource="http://mundo.org/Pelicula"/>
+    <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  </rdf:Property>
+
+  <rdf:Description rdf:about="http://mundo.org/Luis">
+    <rdf:type rdf:resource="http://mundo.org/Persona"/>
+    <ns0:nombre>Luis</ns0:nombre>
+    <ns0:nacimiento rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2001</ns0:nacimiento>
+  </rdf:Description>
+
+  <ns0:Actor rdf:about="http://mundo.org/Juan">
+    <ns0:nombre>Juan</ns0:nombre>
+    <ns0:nacimiento rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2000</ns0:nacimiento>
+    <ns0:interpretar>Manuel</ns0:interpretar>
+    <ns0:amistad>Luis</ns0:amistad>
+  </ns0:Actor>
+
+  <ns0:Personaje rdf:about="http://mundo.org/Manuel">
+    <ns0:nombre>Manuel</ns0:nombre>
+    <ns0:nacimiento rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1890</ns0:nacimiento>
+    <ns0:interpretado>Juan</ns0:interpretado>
+  </ns0:Personaje>
+
+  <ns0:Pelicula rdf:about="http://mundo.org/Saw">
+    <ns0:nombre>Saw</ns0:nombre>
+    <ns0:tienePersonajes>Manuel</ns0:tienePersonajes>
+  </ns0:Pelicula>
+
+</rdf:RDF>
