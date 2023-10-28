@@ -1,10 +1,10 @@
 import scrapy
 from scrapy.crawler import CrawlerProcess
 
-class wikiSpider(scrapy.Spider):
+class WikiSpider(scrapy.Spider):
     name = 'wiki_spider'
     
-    start_urls = ['https://en.wikipedia.org/wiki/YOUR_TOPIC_HERE']
+    start_urls = ['https://es.wikipedia.org/wiki/Programaci%C3%B3n']
 
     custom_settings = {
         'ROBOTSTXT_OBEY': True,
@@ -12,11 +12,22 @@ class wikiSpider(scrapy.Spider):
         'DOWNLOAD_DELAY': 3   # delay between requests
     }
 
+    def autoId(self):
+        self.idcount += 1
+        return str(self.idcount)
+
     def parse(self, response):
-        print('1')
+        
+        # Verify the limit hasn't been exceeded yet
+        if self.articles_crawled >= self.MAX_ARTICLES:
+            return
+
+        # Increase the number of crawled pages
+        self.articles_crawled += 1
+        
         # Extract the article's title to construct the filename
         title = response.css('h1::text').get()
-        filename = 'C:\\Users\\Usuario\\Documents\\University\\Recuperacion Web\\LibreriaUNAL\\Trabajo 2\\archivos\\'+title.replace(" ", "_") + '.txt'
+        filename = 'C:\\Users\\Usuario\\Documents\\University\\Recuperacion Web\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt'
         
         # Extracting the content
         text = "".join(response.xpath('//p//text()').getall())
@@ -27,7 +38,13 @@ class wikiSpider(scrapy.Spider):
         
         self.log('Saved file %s' % filename)
         # Follow the links to the next pages
-        for next_page in response.css('a::attr(href)').getall():
-            if next_page is not None and 'wikipedia.org' in next_page:
-                next_page_link = response.urljoin(next_page)
-                yield scrapy.Request(url=next_page_link, callback=self.parse)
+        links = response.css('a')
+        self.log('Found %d links' % len(links))
+
+        for next_page in links:
+            href = next_page.xpath('@href').get()
+            class_name = next_page.xpath('@class').get()
+            if 'interlanguage-link' not in class_name: 
+                if href is not None and 'wikipedia.org' in href:
+                    next_page_link = response.urljoin(href)
+                    yield scrapy.Request(url=next_page_link, callback=self.parse)
