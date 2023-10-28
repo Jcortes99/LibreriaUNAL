@@ -509,9 +509,12 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CienAños
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CienAños> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CienAños> rdf:type owl:NamedIndividual ,
+                                                                         <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Disponible> ;
                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/antesDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TiemposColera> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/despuesDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CoronelNoTiene> ;
                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneAutor> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Gabo> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Planeta> ;
                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/RealismoMagico> ;
                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Biblioteca> ;
                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneTitulo> "Cien Años De Soledad" .
@@ -524,9 +527,12 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CoronelNoTiene
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CoronelNoTiene> rdf:type owl:NamedIndividual ;
-                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/antesDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CienAños> ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CoronelNoTiene> rdf:type owl:NamedIndividual ,
+                                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Disponible> ;
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/antesDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CienAños> ,
+                                                                                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TiemposColera> ;
                                                                       <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneAutor> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Gabo> ;
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Norma> ;
                                                                       <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Suspenso> ;
                                                                       <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Biblioteca> ;
                                                                       <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneTitulo> "El Coronel No Tiene Quien Le Escriba" .
@@ -550,6 +556,7 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Dante
 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Dante> rdf:type owl:NamedIndividual ,
                                                                       <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Autor> ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/autorDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/DivinaComedia> ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1321"^^xsd:int ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Dante Alighieri" .
 
@@ -573,14 +580,18 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ElColombiano
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ElColombiano> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ElColombiano> rdf:type owl:NamedIndividual ,
+                                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Periodico> ;
+                                                                    <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditor> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/DanielRivera> ;
                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hemeroteca> ;
                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneFechaPublicacion> "2011"^^xsd:int ;
                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "El Colombiano" .
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ElEspectador
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ElEspectador> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ElEspectador> rdf:type owl:NamedIndividual ,
+                                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Periodico> ;
+                                                                    <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditor> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/FidelCano> ;
                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hemeroteca> ;
                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneFechaPublicacion> "1993"^^xsd:int ;
                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "El Espectador" .
@@ -597,11 +608,14 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Flash
 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Flash> rdf:type owl:NamedIndividual ,
                                                                       <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Superheroe> ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/superheroeDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheFlash> ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Flash" .
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Forbes
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Forbes> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Forbes> rdf:type owl:NamedIndividual ,
+                                                                       <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Revista> ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditor> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/SteveForbes> ;
                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hemeroteca> ;
                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEdicion> "Abril 2011" ;
                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Forbes" .
@@ -610,6 +624,9 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Gabo
 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Gabo> rdf:type owl:NamedIndividual ,
                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Autor> ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/autorDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CienAños> ,
+                                                                                                                           <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CoronelNoTiene> ,
+                                                                                                                           <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TiemposColera> ;
                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1927"^^xsd:int ;
                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Gabriel Garcia Marquez" .
 
@@ -630,11 +647,14 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hulk
 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hulk> rdf:type owl:NamedIndividual ,
                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Superheroe> ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/superheroeDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheHulk> ;
                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Hulk" .
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hunter
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hunter> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hunter> rdf:type owl:NamedIndividual ,
+                                                                       <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Manga> ;
+                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Shukan> ;
                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Aventura> ;
                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneMangaka> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Togashi> ;
                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ludoteca> ;
@@ -642,7 +662,10 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Juan
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Juan> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Juan> rdf:type owl:NamedIndividual ,
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona> ,
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Socio> ,
+                                                                     foaf:Person ;
                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/amigoDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luna> ,
                                                                                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Marta> ;
                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "2010"^^xsd:int ;
@@ -657,21 +680,32 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luis
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luis> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luis> rdf:type owl:NamedIndividual ,
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona> ,
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Socio> ,
+                                                                     foaf:Person ;
                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1990"^^xsd:int ;
                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneIdentificador> "30001"^^xsd:int ;
                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Luis Lagos" .
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luna
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luna> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luna> rdf:type owl:NamedIndividual ,
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona> ,
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Socio> ,
+                                                                     foaf:Person ;
+                                                            <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/amigoDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Juan> ;
                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1980"^^xsd:int ;
                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneIdentificador> "20001"^^xsd:int ;
                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Luna Lunera" .
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Marta
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Marta> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Marta> rdf:type owl:NamedIndividual ,
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Persona> ,
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Socio> ,
+                                                                      foaf:Person ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/amigoDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Juan> ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "2000"^^xsd:int ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneIdentificador> "10001"^^xsd:int ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Marta Martinez" .
@@ -687,24 +721,28 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Miura
 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Miura> rdf:type owl:NamedIndividual ,
                                                                       <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Mangaka> ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/mangakaDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Berserker> ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1966"^^xsd:int ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Kentaro Miura" .
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Norma
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Norma> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Norma> rdf:type owl:NamedIndividual ,
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CoronelNoTiene> ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Editorial Norma" .
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Penguin
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Penguin> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Penguin> rdf:type owl:NamedIndividual ,
+                                                                        <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> ;
                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/DivinaComedia> ;
                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Penguin Random House" .
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Planeta
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Planeta> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Planeta> rdf:type owl:NamedIndividual ,
+                                                                        <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> ;
                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CienAños> ;
                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Editorial Planeta" .
 
@@ -737,7 +775,9 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheFlash
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheFlash> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheFlash> rdf:type owl:NamedIndividual ,
+                                                                         <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Comic> ;
+                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/DC> ;
                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Comedia> ;
                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneSuperheroe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Flash> ;
                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ludoteca> ;
@@ -745,7 +785,9 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheHulk
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheHulk> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TheHulk> rdf:type owl:NamedIndividual ,
+                                                                        <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Comic> ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Marvel> ;
                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneGenero> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Drama> ;
                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneSuperheroe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hulk> ;
                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Ludoteca> ;
@@ -753,7 +795,10 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TiemposColera
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TiemposColera> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TiemposColera> rdf:type owl:NamedIndividual ,
+                                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Prestado> ;
+                                                                     <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/despuesDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CienAños> ,
+                                                                                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/CoronelNoTiene> ;
                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/prestadoA> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Luna> ;
                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneAutor> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Gabo> ;
                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditorial> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Universal> ;
@@ -764,6 +809,7 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Togashi
 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Togashi> rdf:type owl:NamedIndividual ,
                                                                         <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Mangaka> ;
+                                                               <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/mangakaDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hunter> ;
                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/añoDeNacimiento> "1966"^^xsd:int ;
                                                                <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Yoshihiro Togashi" .
 
@@ -775,12 +821,16 @@ yago:Publisher108062623 rdf:type owl:NamedIndividual ;
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Universal
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Universal> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Universal> rdf:type owl:NamedIndividual ,
+                                                                          <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Editorial> ;
+                                                                 <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/editorialDe> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/TiemposColera> ;
                                                                  <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Editorial Universal" .
 
 
 ###  http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Vouge
-<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Vouge> rdf:type owl:NamedIndividual ;
+<http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Vouge> rdf:type owl:NamedIndividual ,
+                                                                      <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Revista> ;
+                                                             <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEditor> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/AnnaWintour> ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/ubicadoEn> <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/Hemeroteca> ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneEdicion> "Abril 1984" ;
                                                              <http://localhost:8890/Biblioteca-Hemeroteca-Ludoteca/tieneNombre> "Vouge" .
