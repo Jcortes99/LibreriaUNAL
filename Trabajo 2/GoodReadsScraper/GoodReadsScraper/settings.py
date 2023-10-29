@@ -1,4 +1,4 @@
-# Scrapy settings for wikiscraper project
+# Scrapy settings for GoodReadsScraper project
 #
 # For simplicity, this file contains only settings considered important or
 # commonly used. You can find more settings consulting the documentation:
@@ -7,14 +7,14 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
-BOT_NAME = "wikiscraper"
+BOT_NAME = "GoodReadsScraper"
 
-SPIDER_MODULES = ["wikiscraper.spiders"]
-NEWSPIDER_MODULE = "wikiscraper.spiders"
+SPIDER_MODULES = ["GoodReadsScraper.spiders"]
+NEWSPIDER_MODULE = "GoodReadsScraper.spiders"
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = "wikiscraper (+http://www.yourdomain.com)"
+#USER_AGENT = "GoodReadsScraper (+http://www.yourdomain.com)"
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = True
@@ -45,13 +45,13 @@ ROBOTSTXT_OBEY = True
 # Enable or disable spider middlewares
 # See https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 #SPIDER_MIDDLEWARES = {
-#    "wikiscraper.middlewares.WikiscraperSpiderMiddleware": 543,
+#    "GoodReadsScraper.middlewares.GoodreadsscraperSpiderMiddleware": 543,
 #}
 
 # Enable or disable downloader middlewares
 # See https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #DOWNLOADER_MIDDLEWARES = {
-#    "wikiscraper.middlewares.WikiscraperDownloaderMiddleware": 543,
+#    "GoodReadsScraper.middlewares.GoodreadsscraperDownloaderMiddleware": 543,
 #}
 
 # Enable or disable extensions
@@ -63,7 +63,7 @@ ROBOTSTXT_OBEY = True
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 #ITEM_PIPELINES = {
-#    "wikiscraper.pipelines.WikiscraperPipeline": 300,
+#    "GoodReadsScraper.pipelines.GoodreadsscraperPipeline": 300,
 #}
 
 # Enable and configure the AutoThrottle extension (disabled by default)

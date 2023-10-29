@@ -8,6 +8,6 @@
 from itemadapter import ItemAdapter
 
 
-class WikiscraperPipeline:
+class GoodreadsscraperPipeline:
     def process_item(self, item, spider):
         return item
