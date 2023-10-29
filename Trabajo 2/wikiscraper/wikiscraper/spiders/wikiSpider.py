@@ -1,8 +1,11 @@
 import scrapy
 from scrapy.crawler import CrawlerProcess
 
-class WikiSpider(scrapy.Spider):
+class wikiSpider(scrapy.Spider):
     name = 'wiki_spider'
+    idcount = 0
+    articles_crawled = 0 
+    MAX_ARTICLES = 25
     
     start_urls = ['https://es.wikipedia.org/wiki/Programaci%C3%B3n']
 
@@ -27,7 +30,7 @@ class WikiSpider(scrapy.Spider):
         
         # Extract the article's title to construct the filename
         title = response.css('h1::text').get()
-        filename = 'C:\\Users\\Usuario\\Documents\\University\\Recuperacion Web\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt'
+        filename = 'C:\\Users\\dgbla\\GitHub\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt'
         
         # Extracting the content
         text = "".join(response.xpath('//p//text()').getall())
@@ -44,7 +47,8 @@ class WikiSpider(scrapy.Spider):
         for next_page in links:
             href = next_page.xpath('@href').get()
             class_name = next_page.xpath('@class').get()
-            if 'interlanguage-link' not in class_name: 
-                if href is not None and 'wikipedia.org' in href:
-                    next_page_link = response.urljoin(href)
-                    yield scrapy.Request(url=next_page_link, callback=self.parse)
+            if class_name: 
+                if 'interlanguage-link' not in class_name:
+                    if href is not None and 'wikipedia.org' in href:
+                        next_page_link = response.urljoin(href)
+                        yield scrapy.Request(url=next_page_link, callback=self.parse)
