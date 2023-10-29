@@ -34,7 +34,7 @@ class GoodReadsSpider(scrapy.Spider):
         title = response.css('h1.Text.Text__title1::text').get().strip()
         synopsis = response.css('.Formatted::text').get().strip()
         
-        path = 'C:\\Users\\Usuario\\Documents\\University\\Recuperacion Web\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt'
+        path = 'C:\\Users\\dgbla\\GitHub\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt'
         
         with open(path, 'w') as f:
             f.write(f'{title}\n{synopsis}')
