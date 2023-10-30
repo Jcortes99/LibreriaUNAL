@@ -1,4 +1,5 @@
 import scrapy
+from bs4 import BeautifulSoup
 
 class GoodReadsSpider(scrapy.Spider):
     # Name of our spider bot
@@ -32,9 +33,11 @@ class GoodReadsSpider(scrapy.Spider):
 
     def parse_book(self, response):
         title = response.css('h1.Text.Text__title1::text').get().strip()
-        synopsis = response.css('.Formatted::text').get().strip()
         
-        path = 'C:\\Users\\dgbla\\GitHub\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt'
+        span_html = response.css('.Formatted').get()
+        soup = BeautifulSoup(span_html, 'html.parser')
+        synopsis = ''.join(soup.stripped_strings)
+        path = 'C:\\Users\\Usuario\\Documents\\University\\Recuperacion Web\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt'
         
         with open(path, 'w') as f:
             f.write(f'{title}\n{synopsis}')
