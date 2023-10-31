@@ -37,7 +37,10 @@ class GoodReadsSpider(scrapy.Spider):
         span_html = response.css('.Formatted').get()
         soup = BeautifulSoup(span_html, 'html.parser')
         synopsis = ''.join(soup.stripped_strings)
-        path = 'C:\\Users\\Usuario\\Documents\\University\\Recuperacion Web\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt'
+        
+        # path = 'C:\\Users\\Usuario\\Documents\\University\\Recuperacion Web\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt' #Pc personal Jairo
+        # path = 'C:\\Users\\dgbla\\GitHub\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt' #Pc David
+        path = 'C:\\Users\\Usuario\\Documents\\Github\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt' #Pc trabajo Jairo
         
         with open(path, 'w') as f:
             f.write(f'{title}\n{synopsis}')
