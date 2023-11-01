@@ -6,11 +6,11 @@ class GoodReadsSpider(scrapy.Spider):
     name = 'goodreads'
     
     # Initial URLs to visit
-    start_urls = ['https://www.goodreads.com/shelf/show/fiction']
+    start_urls = ['https://www.goodreads.com/shelf/show/young-adult']
 
     aux = 0
     
-    id = 0
+    id = 1447
     
     def autoId(self):
         self.id += 1
@@ -20,16 +20,15 @@ class GoodReadsSpider(scrapy.Spider):
         # Selector for book items
         for book in response.css('.bookTitle::attr(href)'):
             url = book.get()
-            if self.aux < 10:
-                self.aux += 1
-                if url is not None:
-                    yield response.follow(url, self.parse_book)
+            self.aux += 1
+            if url is not None:
+                yield response.follow(url, self.parse_book)
 
         # Select the NEXT button link and parse pages recursively
-        if self.aux < 10:
-            next_page = response.css('div.pagination a.next_page::attr(href)').get()
-            if next_page is not None:
-                yield response.follow(next_page, self.parse)
+        # if self.aux < 10:
+        next_page = response.css('div.pagination a.next_page::attr(href)').get()
+        if next_page is not None:
+            yield response.follow(next_page, self.parse)
 
     def parse_book(self, response):
         title = response.css('h1.Text.Text__title1::text').get().strip()
@@ -38,9 +37,9 @@ class GoodReadsSpider(scrapy.Spider):
         soup = BeautifulSoup(span_html, 'html.parser')
         synopsis = ''.join(soup.stripped_strings)
         
-        # path = 'C:\\Users\\Usuario\\Documents\\University\\Recuperacion Web\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt' #Pc personal Jairo
+        path = 'C:\\Users\\Usuario\\Documents\\University\\Recuperacion Web\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt' #Pc personal Jairo
         # path = 'C:\\Users\\dgbla\\GitHub\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt' #Pc David
-        path = 'C:\\Users\\Usuario\\Documents\\Github\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt' #Pc trabajo Jairo
+        # path = 'C:\\Users\\Usuario\\Documents\\Github\\LibreriaUNAL\\Trabajo 2\\archivos\\'+ self.autoId() + '.txt' #Pc trabajo Jairo
         
         with open(path, 'w') as f:
             f.write(f'{title}\n{synopsis}')
