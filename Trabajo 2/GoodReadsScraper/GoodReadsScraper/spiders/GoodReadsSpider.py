@@ -6,11 +6,12 @@ class GoodReadsSpider(scrapy.Spider):
     name = 'goodreads'
     
     # Initial URLs to visit
-    start_urls = ['https://www.goodreads.com/shelf/show/young-adult']
+    # se modifico el end point para que se hiciera el srapping https://www.goodreads.com/shelf/show/young-adult, https://www.goodreads.com/shelf/show/fiction, .../show/childrens, etc
+    start_urls = ['https://www.goodreads.com/shelf/show/young-adult'] 
 
     aux = 0
     
-    id = 1447
+    id = 0
     
     def autoId(self):
         self.id += 1
